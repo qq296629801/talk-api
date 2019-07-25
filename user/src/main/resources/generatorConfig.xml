@@ -9,7 +9,8 @@
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/talk" userId="root" password="123456">
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/tour?serverTimezone=GMT%2B8" userId="root"
+                        password="123456">
         </jdbcConnection>
         <!-- 生成模型的包名和位置 -->
         <javaModelGenerator targetPackage="cn.ymsys.api.orm.model"
@@ -34,7 +35,41 @@
         </table>-->
         <table tableName="t_user" domainObjectName="User">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-            <generatedKey column="USER_ID" sqlStatement="Mysql" identity="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="t_attend" domainObjectName="Attend">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="t_blacklist" domainObjectName="Blacklist">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="t_group" domainObjectName="Group">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="t_group_user" domainObjectName="GroupUser">
+        </table>
+        <table tableName="t_money" domainObjectName="Money">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="t_notice" domainObjectName="Notice">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="t_talk" domainObjectName="Talk">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="t_user" domainObjectName="User">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="t_word" domainObjectName="Word">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>
