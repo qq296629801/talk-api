@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import cn.ymsys.api.common.util.DataUtil;
-import cn.ymsys.api.common.util.OwnException;
-import cn.ymsys.api.common.util.RootModel;
+
+import ymsys.api.common.util.DataUtil;
+import ymsys.api.common.util.OwnException;
+import ymsys.api.common.util.RootModel;
 
 public class JsonResponse extends LinkedHashMap<String, Object> implements Serializable {
     private static final String JSON_KEY_SUCCESS = "success";
