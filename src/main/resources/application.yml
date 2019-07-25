@@ -1,0 +1,56 @@
+server:
+  port: 8080
+spring:
+  thymeleaf:
+    prefix: classpath:/templates
+  # mongodb
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: play
+
+tour:
+  #数据源配置
+  db-datasource:
+    name: tour
+    url: jdbc:mysql://127.0.0.1:3306/tour?serverTimezone=GMT%2B8&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useAffectedRows=true&useSSL=false
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.xa.DruidXADataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 500
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    validationQueryTimeout: 10000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+    filters:
+      commons-log.connection-logger-name: stat,wall,log4j
+  # redis
+  redis-datasource:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        min-idle: 8
+        max-idle: 3000
+        max-active: 2000
+        max-total: 3000
+        max-wait: 10000
+    timeout: 0
+  shiro:
+    # 后端免认证接口 url
+    #anonUrl: /*.html,/static/**,/login,/logout/**,/regist,/images/**,/api2doc/**,/website/**
+    anonUrl: /**
+    # token有效期，单位秒
+    jwtTimeOut: 3600
