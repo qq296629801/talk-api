@@ -33,7 +33,7 @@
         <!--<table tableName="%">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>-->
-        <table tableName="T_USER" domainObjectName="User">
+        <table tableName="S_USER" domainObjectName="User">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
@@ -45,7 +45,7 @@
             <property name="ignoreQualifiersAtRuntime" value="true"/>
             <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
         </table>
-        <table tableName="T_GROUP" domainObjectName="Group">
+        <table tableName="S_GROUP" domainObjectName="Group">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
             <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
         </table>
