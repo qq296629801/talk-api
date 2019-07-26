@@ -54,3 +54,12 @@ tour:
     anonUrl: /**
     # token有效期，单位秒
     jwtTimeOut: 3600
+
+netty:
+  tcp:
+    port: 8888
+  websocket:
+    path: /chat
+    port: 9999
+    http-object-arggregator:
+      max-content-length: 64 * 1024
