@@ -49,7 +49,7 @@
             <property name="ignoreQualifiersAtRuntime" value="true"/>
             <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
         </table>
-        <table tableName="T_GROUP_USER" domainObjectName="GroupUser">
+        <table tableName="S_GROUP_USER" domainObjectName="GroupUser">
         </table>
         <table tableName="t_money" domainObjectName="Money">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
