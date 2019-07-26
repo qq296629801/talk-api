@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 创建群组请求数据包
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 @Data

@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 引导Netty客户端
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-20
  */
 public class TcpChatClient {

@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * 数据包抽象基类
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-20
  */
 @Data

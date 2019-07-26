@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSON;
 /**
  * json 序列化器
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-20
  */
 public class JSONSerializer implements Serializer {

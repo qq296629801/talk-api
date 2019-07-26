@@ -7,7 +7,7 @@ import io.netty.channel.Channel;
 import java.util.Scanner;
 
 /**
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 public class LoginConsoleCommand implements ConsoleCommand {

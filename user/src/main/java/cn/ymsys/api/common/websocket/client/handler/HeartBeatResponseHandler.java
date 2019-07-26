@@ -7,7 +7,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 /**
  * 心跳检测响应
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 public class HeartBeatResponseHandler extends SimpleChannelInboundHandler<HeartBeatResponsePacket> {

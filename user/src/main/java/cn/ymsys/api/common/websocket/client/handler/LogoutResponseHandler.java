@@ -6,7 +6,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 /**
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 public class LogoutResponseHandler extends SimpleChannelInboundHandler<LogoutResponsePacket> {

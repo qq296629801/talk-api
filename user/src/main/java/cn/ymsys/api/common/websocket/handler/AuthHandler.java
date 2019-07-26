@@ -8,7 +8,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 /**
  * 鉴权逻辑处理器
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 @ChannelHandler.Sharable

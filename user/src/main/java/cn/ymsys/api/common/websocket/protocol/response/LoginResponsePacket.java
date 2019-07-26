@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 登录响应数据包
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-20
  */
 @Data

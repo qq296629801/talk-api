@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 服务端发送至客户端的消息数据包
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-20
  */
 @Data

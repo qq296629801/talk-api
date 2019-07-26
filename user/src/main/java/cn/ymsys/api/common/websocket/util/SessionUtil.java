@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 会话工具类
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 public class SessionUtil {

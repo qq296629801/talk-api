@@ -14,7 +14,7 @@ import java.util.Date;
 /**
  * 登录请求逻辑处理器
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 @ChannelHandler.Sharable

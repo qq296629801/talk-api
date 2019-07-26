@@ -5,7 +5,7 @@ import cn.ymsys.api.common.websocket.serialize.impl.JSONSerializer;
 /**
  * 序列化接口
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-20
  */
 public interface Serializer {

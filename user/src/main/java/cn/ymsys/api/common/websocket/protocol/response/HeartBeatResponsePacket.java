@@ -5,7 +5,7 @@ import cn.ymsys.api.common.websocket.protocol.command.Command;
 import lombok.Data;
 
 /**
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 @Data

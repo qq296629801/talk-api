@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 心跳检测
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 public class HeartBeatTimerHandler extends ChannelInboundHandlerAdapter {

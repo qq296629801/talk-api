@@ -7,7 +7,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 /**
  * 接收消息
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 public class MessageResponseHandler extends SimpleChannelInboundHandler<MessageResponsePacket> {

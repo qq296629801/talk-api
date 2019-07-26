@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 空闲检查
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 public class IMIdleStateHandler extends IdleStateHandler {

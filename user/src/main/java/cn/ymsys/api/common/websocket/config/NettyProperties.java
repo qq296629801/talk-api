@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * Netty配置
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-23
  */
 @Data

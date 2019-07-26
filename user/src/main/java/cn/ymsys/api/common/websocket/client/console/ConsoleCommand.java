@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * 控制台指令根接口
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 public interface ConsoleCommand {

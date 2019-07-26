@@ -3,7 +3,7 @@ package cn.ymsys.api.common.websocket.protocol.command;
 /**
  * 指令
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-20
  */
 public interface Command {

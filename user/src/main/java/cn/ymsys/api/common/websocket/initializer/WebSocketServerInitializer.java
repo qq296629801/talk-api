@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 /**
  * websocket连接初始化Channel，给Channel关联的pipeline添加handler
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-22
  */
 @Component

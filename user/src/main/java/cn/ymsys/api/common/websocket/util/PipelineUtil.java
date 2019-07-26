@@ -6,7 +6,7 @@ import io.netty.channel.ChannelPipeline;
 /**
  * ChannelPipeline工具类
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-22
  */
 public class PipelineUtil {

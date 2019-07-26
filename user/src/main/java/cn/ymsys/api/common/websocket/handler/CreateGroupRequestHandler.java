@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * 创建群聊请求逻辑处理器
  *
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 @ChannelHandler.Sharable

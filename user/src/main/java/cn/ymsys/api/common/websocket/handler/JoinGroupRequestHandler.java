@@ -9,7 +9,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
 
 /**
- * @author feng
+ * @author mjy
  * @date 2019-04-21
  */
 @ChannelHandler.Sharable
