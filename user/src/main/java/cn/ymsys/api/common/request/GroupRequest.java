@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 public class GroupRequest extends PagerUtil {
     private String groupName;
-    private Integer socketId;
+    private Integer socketPort;
 }

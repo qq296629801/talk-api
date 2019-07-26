@@ -18,13 +18,13 @@ public class GroupService {
 
     public Group insertGroup(GroupRequest vo) {
         if (DataUtil.isEmpty(vo.getGroupName())
-                || DataUtil.isNull(vo.getSocketId())) {
+                || DataUtil.isNull(vo.getSocketPort())) {
             throw new PortalException("参数有误");
         }
 
         Group group = new Group();
         group.setGroupName(vo.getGroupName());
-        group.setSocketPort(vo.getSocketId());
+        group.setSocketPort(vo.getSocketPort());
         group.setLastOperTime(new Date());
         group.setOperTime(new Date());
         group.setLastOperUser("user");
