@@ -12,6 +12,7 @@
     <artifactId>user</artifactId>
 
     <dependencies>
+
         <!-- mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
