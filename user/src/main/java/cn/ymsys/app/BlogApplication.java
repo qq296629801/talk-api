@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-@ComponentScan({"cn.ymsys.api.*"})
+@ComponentScan({"cn.ymsys.api.*", "com.kefu.netty.*"})
 @SpringBootApplication
 @EnableAsync
 @EnableConfigurationProperties(NettyProperties.class)
