@@ -1,23 +1,5 @@
 server:
   port: 8080
-spring:
-  thymeleaf:
-    prefix: classpath:/templates
-  # mongodb
-  data:
-    mongodb:
-      host: 127.0.0.1
-      port: 27017
-      database: play
-
-netty:
-  tcp:
-    port: 8888
-  websocket:
-    path: /chat
-    port: 9999
-    http-object-arggregator:
-      max-content-length: 64 * 1024
 
 tour:
   #数据源配置
