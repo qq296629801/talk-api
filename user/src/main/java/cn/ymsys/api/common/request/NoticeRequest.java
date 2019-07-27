@@ -5,4 +5,7 @@ import lombok.Data;
 
 @Data
 public class NoticeRequest extends PagerUtil {
+    private Integer groupId;
+    private String context;
+    private Integer noticeId;
 }

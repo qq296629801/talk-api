@@ -1,12 +1,12 @@
 package cn.ymsys.api.common.enums;
 
-public enum RoleEnum {
-    SUPPLIER_ROLE(0, "供应商"),
-    BUY_ROLE(1, "采购商");
+public enum StatusEnum {
+    NORMAL(0, "正常"),
+    DELETE(1, "删除");
     private int state;
     private String name;
 
-    RoleEnum(int state, String name) {
+    StatusEnum(int state, String name) {
         this.state = state;
         this.name = name;
     }
@@ -29,6 +29,6 @@ public enum RoleEnum {
 
 
     public static String valueOf(int state) {
-        return RoleEnum.values()[state].name;
+        return StatusEnum.values()[state].name;
     }
 }

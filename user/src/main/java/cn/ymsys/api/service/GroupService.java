@@ -1,10 +1,10 @@
 package cn.ymsys.api.service;
 
-import cn.ymsys.api.common.exception.PortalException;
+import cn.ymsys.api.common.enums.StatusEnum;
 import cn.ymsys.api.common.request.GroupRequest;
-import cn.ymsys.api.common.util.DataUtil;
 import cn.ymsys.api.orm.mapper.GroupMapper;
 import cn.ymsys.api.orm.model.Group;
+import cn.ymsys.api.orm.model.GroupExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,33 +18,46 @@ public class GroupService {
     private GroupMapper groupMapper;
 
     public Group create(GroupRequest vo) {
-        if (DataUtil.isEmpty(vo.getGroupName())
-                || DataUtil.isNull(vo.getSocketPort())) {
-            throw new PortalException("参数有误");
-        }
-
         Group group = new Group();
         group.setGroupName(vo.getGroupName());
         group.setSocketPort(vo.getSocketPort());
         group.setLastOperTime(new Date());
         group.setOperTime(new Date());
-        group.setLastOperUser("user");
-        group.setOperUser("user");
-        groupMapper.insert(group);
+        groupMapper.insertSelective(group);
         return group;
     }
 
 
     public List<Group> querys(GroupRequest vo) {
-        return null;
+        GroupExample example = new GroupExample();
+        GroupExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusEqualTo(StatusEnum.NORMAL.getState());
+        return groupMapper.selectByExample(example);
     }
 
     public int update(GroupRequest vo) {
-        return 1;
+        Group group = new Group();
+        group.setId(vo.getGroupId());
+        group.setGroupName(vo.getGroupName());
+        group.setSocketPort(vo.getSocketPort());
+        group.setLastOperTime(new Date());
+        group.setOperTime(new Date());
+
+        GroupExample example = new GroupExample();
+        GroupExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusEqualTo(StatusEnum.NORMAL.getState());
+        return groupMapper.updateByExampleSelective(group, example);
     }
 
     public int delete(GroupRequest vo) {
-        return 1;
+        Group group = new Group();
+        group.setId(vo.getGroupId());
+        group.setStatus(StatusEnum.DELETE.getState());
+
+        GroupExample example = new GroupExample();
+        GroupExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusEqualTo(StatusEnum.NORMAL.getState());
+        return groupMapper.updateByExampleSelective(group, example);
     }
 
 }

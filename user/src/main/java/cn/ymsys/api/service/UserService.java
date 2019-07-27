@@ -46,10 +46,28 @@ public class UserService {
     }
 
     public int update(UserRequest vo) {
-        return 1;
+        User user = new User();
+        user.setId(vo.getId());
+        user.setUserName(vo.getUsername());
+        user.setPassword(MD5Util.encrypt(vo.getUsername(), vo.getPassword()));
+        user.setMoney(vo.getMoney());
+        user.setLastOperTime(new Date());
+
+
+        UserExample example = new UserExample();
+        UserExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusEqualTo(0);
+        return userMapper.updateByExampleSelective(user, example);
     }
 
     public int delete(UserRequest vo) {
-        return 1;
+        User user = new User();
+        user.setId(vo.getId());
+        user.setStatus(1);
+
+        UserExample example = new UserExample();
+        UserExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusEqualTo(0);
+        return userMapper.updateByExampleSelective(user, example);
     }
 }
