@@ -25,7 +25,7 @@ public class UserService {
     }
 
 
-    public User createUser(UserRequest vo) {
+    public User create(UserRequest vo) {
         User user = new User();
         user.setUserName(vo.getUsername());
         user.setPassword(MD5Util.encrypt(vo.getUsername(), vo.getPassword()));
@@ -38,18 +38,18 @@ public class UserService {
     }
 
 
-    public List<User> queryUsers(UserRequest vo) {
+    public List<User> querys(UserRequest vo) {
         UserExample example = new UserExample();
         UserExample.Criteria criteria = example.createCriteria();
         criteria.andStatusEqualTo(0);
         return userMapper.selectByExample(example);
     }
 
-    public int updateUser(UserRequest vo) {
+    public int update(UserRequest vo) {
         return 1;
     }
 
-    public int deleteUser(UserRequest vo) {
+    public int delete(UserRequest vo) {
         return 1;
     }
 }

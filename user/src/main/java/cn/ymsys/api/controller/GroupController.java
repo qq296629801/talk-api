@@ -16,6 +16,21 @@ public class GroupController {
 
     @RequestMapping("/create")
     public JsonResponse create(@RequestBody GroupRequest vo) {
-        return JsonResponse.success(groupService.insertGroup(vo));
+        return JsonResponse.success(groupService.create(vo));
+    }
+
+    @RequestMapping("/update")
+    public JsonResponse update(@RequestBody GroupRequest vo) {
+        return JsonResponse.success(groupService.update(vo));
+    }
+
+    @RequestMapping("/delete")
+    public JsonResponse delete(@RequestBody GroupRequest vo) {
+        return JsonResponse.success(groupService.delete(vo));
+    }
+
+    @RequestMapping("/querys")
+    public JsonResponse querys(@RequestBody GroupRequest vo) {
+        return JsonResponse.success(groupService.querys(vo));
     }
 }

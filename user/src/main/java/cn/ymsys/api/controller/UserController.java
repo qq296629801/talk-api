@@ -16,22 +16,22 @@ public class UserController {
 
     @RequestMapping("/create")
     public JsonResponse create(@RequestBody UserRequest vo) {
-        return JsonResponse.success(userService.createUser(vo));
+        return JsonResponse.success(userService.create(vo));
     }
 
     @RequestMapping("/update")
     public JsonResponse update(@RequestBody UserRequest vo) {
-        return JsonResponse.success(userService.updateUser(vo));
+        return JsonResponse.success(userService.update(vo));
     }
 
     @RequestMapping("/delete")
     public JsonResponse delete(@RequestBody UserRequest vo) {
-        return JsonResponse.success(userService.deleteUser(vo));
+        return JsonResponse.success(userService.delete(vo));
     }
 
     @RequestMapping("/querys")
     public JsonResponse querys(@RequestBody UserRequest vo) {
-        return JsonResponse.success(userService.queryUsers(vo));
+        return JsonResponse.success(userService.querys(vo));
     }
 
 

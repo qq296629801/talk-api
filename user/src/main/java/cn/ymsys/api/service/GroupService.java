@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class GroupService {
@@ -16,7 +17,7 @@ public class GroupService {
     @Autowired
     private GroupMapper groupMapper;
 
-    public Group insertGroup(GroupRequest vo) {
+    public Group create(GroupRequest vo) {
         if (DataUtil.isEmpty(vo.getGroupName())
                 || DataUtil.isNull(vo.getSocketPort())) {
             throw new PortalException("参数有误");
@@ -32,4 +33,18 @@ public class GroupService {
         groupMapper.insert(group);
         return group;
     }
+
+
+    public List<Group> querys(GroupRequest vo) {
+        return null;
+    }
+
+    public int update(GroupRequest vo) {
+        return 1;
+    }
+
+    public int delete(GroupRequest vo) {
+        return 1;
+    }
+
 }
