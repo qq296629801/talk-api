@@ -25,7 +25,7 @@ public class UserService {
     }
 
 
-    public User create(UserRequest vo) {
+    public User createUser(UserRequest vo) {
         User user = new User();
         user.setUserName(vo.getUsername());
         user.setPassword(MD5Util.encrypt(vo.getUsername(), vo.getPassword()));
@@ -45,5 +45,11 @@ public class UserService {
         return userMapper.selectByExample(example);
     }
 
+    public int updateUser(UserRequest vo) {
+        return 1;
+    }
 
+    public int deleteUser(UserRequest vo) {
+        return 1;
+    }
 }
