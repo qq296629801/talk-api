@@ -11,6 +11,7 @@
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="${jdbc.driverClassName}"
                         connectionURL="${jdbc.jdbcUrl}" userId="${jdbc.username}" password="${jdbc.password}">
+            <property name="useInformationSchema" value="true"/>
         </jdbcConnection>
         <!-- 生成模型的包名和位置 -->
         <javaModelGenerator targetPackage="cn.ymsys.api.orm.model"
