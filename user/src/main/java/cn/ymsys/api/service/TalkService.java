@@ -7,6 +7,7 @@ import cn.ymsys.api.orm.model.TalkExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,6 +22,21 @@ public class TalkService {
         criteria.andUserIdEqualTo(vo.getUserId());
         criteria.andStatusEqualTo(0);
         return talkMapper.selectByExample(example);
+    }
+
+    public Talk openTalk(TalkRequest vo) {
+        Talk talk = new Talk();
+        talk.setTalkType(vo.getTalkType());
+        talk.setTalkId(vo.getTalkId());
+        talk.setLastOpenTime(new Date());
+        talk.setOpenTime(new Date());
+        talkMapper.insertSelective(talk);
+        return talk;
+    }
+
+
+    public int closeTalk(TalkRequest vo) {
+        return talkMapper.deleteByPrimaryKey(vo.getId());
     }
 
 }

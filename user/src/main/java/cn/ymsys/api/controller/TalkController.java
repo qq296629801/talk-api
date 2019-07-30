@@ -18,4 +18,14 @@ public class TalkController {
     public JsonResponse queryTalks(@RequestBody TalkRequest vo) {
         return JsonResponse.success(talkService.queryTalks(vo));
     }
+
+    @RequestMapping("/openTalk")
+    public JsonResponse openTalk(@RequestBody TalkRequest vo) {
+        return JsonResponse.success(talkService.openTalk(vo));
+    }
+
+    @RequestMapping("/closeTalk")
+    public JsonResponse closeTalk(@RequestBody TalkRequest vo) {
+        return JsonResponse.success(talkService.closeTalk(vo));
+    }
 }
