@@ -47,7 +47,6 @@
         </table>
         <table tableName="S_GROUP" domainObjectName="Group">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-            <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="S_GROUP_USER" domainObjectName="GroupUser">
             <property name="ignoreQualifiersAtRuntime" value="true"/>

@@ -2,6 +2,7 @@ package cn.ymsys.api.service;
 
 import cn.ymsys.api.common.enums.StatusEnum;
 import cn.ymsys.api.common.request.GroupRequest;
+import cn.ymsys.api.common.websocket.util.IDUtil;
 import cn.ymsys.api.orm.mapper.GroupMapper;
 import cn.ymsys.api.orm.model.Group;
 import cn.ymsys.api.orm.model.GroupExample;
@@ -20,9 +21,11 @@ public class GroupService {
     public Group create(GroupRequest vo) {
         Group group = new Group();
         group.setGroupName(vo.getGroupName());
-        group.setSocketPort(vo.getSocketPort());
+        String groupId = IDUtil.randomId();
+        group.setId(groupId);
         group.setLastOperTime(new Date());
         group.setOperTime(new Date());
+        group.setStatus(0);
         groupMapper.insertSelective(group);
         return group;
     }
@@ -39,7 +42,6 @@ public class GroupService {
         Group group = new Group();
         group.setId(vo.getGroupId());
         group.setGroupName(vo.getGroupName());
-        group.setSocketPort(vo.getSocketPort());
         group.setLastOperTime(new Date());
         group.setOperTime(new Date());
 
