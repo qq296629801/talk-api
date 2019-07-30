@@ -14,7 +14,7 @@ public class GroupController {
     @Autowired
     private GroupService groupService;
 
-    @RequestMapping("/addGroupUsers")
+    @RequestMapping("/addUsers")
     public JsonResponse addGroupUsers(@RequestBody GroupRequest vo) {
         return JsonResponse.success(groupService.addGroupUsers(vo));
     }
