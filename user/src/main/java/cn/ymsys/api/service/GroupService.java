@@ -4,8 +4,10 @@ import cn.ymsys.api.common.enums.StatusEnum;
 import cn.ymsys.api.common.request.GroupRequest;
 import cn.ymsys.api.common.websocket.util.IDUtil;
 import cn.ymsys.api.orm.mapper.GroupMapper;
+import cn.ymsys.api.orm.mapper.GroupUserMapper;
 import cn.ymsys.api.orm.model.Group;
 import cn.ymsys.api.orm.model.GroupExample;
+import cn.ymsys.api.orm.model.GroupUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,20 @@ public class GroupService {
 
     @Autowired
     private GroupMapper groupMapper;
+
+    @Autowired
+    private GroupUserMapper groupUserMapper;
+
+
+    public GroupUser addGroupUsers(GroupRequest vo) {
+        GroupUser groupUser = new GroupUser();
+        groupUser.setGroupId(vo.getGroupId());
+        groupUser.setUserId(vo.getUserId());
+        groupUser.setLastOperTime(new Date());
+        groupUser.setOperTime(new Date());
+        groupUserMapper.insertSelective(groupUser);
+        return groupUser;
+    }
 
     public Group create(GroupRequest vo) {
         Group group = new Group();
