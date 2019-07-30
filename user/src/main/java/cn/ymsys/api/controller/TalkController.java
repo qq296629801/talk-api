@@ -14,7 +14,7 @@ public class TalkController {
     @Autowired
     private TalkService talkService;
 
-    @RequestMapping("/create")
+    @RequestMapping("/queryTalks")
     public JsonResponse queryTalks(@RequestBody TalkRequest vo) {
         return JsonResponse.success(talkService.queryTalks(vo));
     }
