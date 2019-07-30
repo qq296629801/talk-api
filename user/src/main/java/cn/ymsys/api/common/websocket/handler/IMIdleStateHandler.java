@@ -17,7 +17,7 @@ public class IMIdleStateHandler extends IdleStateHandler {
     /**
      * 15秒检查一次。通常服务器空闲检测时间要比客户端心跳检测时间2倍还多一些
      */
-    private static final int READER_IDLE_TIME = 15;
+    private static final int READER_IDLE_TIME = 3600;
 
     public IMIdleStateHandler() {
         super(READER_IDLE_TIME, 0, 0, TimeUnit.SECONDS);

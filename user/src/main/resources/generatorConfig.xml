@@ -36,7 +36,6 @@
         </table>-->
         <table tableName="S_USER" domainObjectName="User">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="T_ATTEND" domainObjectName="Attend">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
@@ -51,6 +50,8 @@
             <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="S_GROUP_USER" domainObjectName="GroupUser">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="t_money" domainObjectName="Money">
             <property name="ignoreQualifiersAtRuntime" value="true"/>

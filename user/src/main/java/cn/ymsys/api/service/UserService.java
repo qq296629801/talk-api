@@ -1,7 +1,9 @@
 package cn.ymsys.api.service;
 
 import cn.ymsys.api.common.request.UserRequest;
+import cn.ymsys.api.common.util.DataUtil;
 import cn.ymsys.api.common.util.MD5Util;
+import cn.ymsys.api.common.websocket.util.IDUtil;
 import cn.ymsys.api.orm.mapper.UserMapper;
 import cn.ymsys.api.orm.model.User;
 import cn.ymsys.api.orm.model.UserExample;
@@ -25,15 +27,28 @@ public class UserService {
     }
 
 
+    public User find(String username, String password) {
+        UserExample example = new UserExample();
+        UserExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusEqualTo(0);
+        criteria.andUserNameEqualTo(username);
+        criteria.andPasswordEqualTo(MD5Util.encrypt(username, password));
+        List<User> users = userMapper.selectByExample(example);
+        return DataUtil.isNull(users) ? null : users.get(0);
+    }
+
     public User create(UserRequest vo) {
         User user = new User();
+        String userId = IDUtil.randomId();
+        user.setId(userId);
+        user.setNickName(vo.getNickName());
         user.setUserName(vo.getUsername());
         user.setPassword(MD5Util.encrypt(vo.getUsername(), vo.getPassword()));
         user.setMoney(0);
         user.setStatus(0);
         user.setOperTime(new Date());
         user.setLastOperTime(new Date());
-        userMapper.insert(user);
+        userMapper.insertSelective(user);
         return user;
     }
 
