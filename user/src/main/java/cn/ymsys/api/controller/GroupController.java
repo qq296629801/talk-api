@@ -19,6 +19,12 @@ public class GroupController {
         return JsonResponse.success(groupService.addGroupUsers(vo));
     }
 
+    @RequestMapping("/queyUsers")
+    public JsonResponse queyUsers(@RequestBody GroupRequest vo) {
+        return JsonResponse.success(groupService.queryUsers(vo));
+    }
+
+
     @RequestMapping("/create")
     public JsonResponse create(@RequestBody GroupRequest vo) {
         return JsonResponse.success(groupService.create(vo));
@@ -36,6 +42,6 @@ public class GroupController {
 
     @RequestMapping("/querys")
     public JsonResponse querys(@RequestBody GroupRequest vo) {
-        return JsonResponse.success(groupService.querys(vo));
+        return JsonResponse.success(groupService.queryGroups(vo));
     }
 }

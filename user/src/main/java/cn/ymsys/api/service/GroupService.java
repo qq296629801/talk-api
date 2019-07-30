@@ -3,11 +3,13 @@ package cn.ymsys.api.service;
 import cn.ymsys.api.common.enums.StatusEnum;
 import cn.ymsys.api.common.request.GroupRequest;
 import cn.ymsys.api.common.websocket.util.IDUtil;
+import cn.ymsys.api.mgr.ExtUserMgr;
 import cn.ymsys.api.orm.mapper.GroupMapper;
 import cn.ymsys.api.orm.mapper.GroupUserMapper;
 import cn.ymsys.api.orm.model.Group;
 import cn.ymsys.api.orm.model.GroupExample;
 import cn.ymsys.api.orm.model.GroupUser;
+import cn.ymsys.api.orm.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,8 @@ public class GroupService {
     @Autowired
     private GroupUserMapper groupUserMapper;
 
+    @Autowired
+    private ExtUserMgr extUserMgr;
 
     public GroupUser addGroupUsers(GroupRequest vo) {
         GroupUser groupUser = new GroupUser();
@@ -32,6 +36,11 @@ public class GroupService {
         groupUser.setOperTime(new Date());
         groupUserMapper.insertSelective(groupUser);
         return groupUser;
+    }
+
+
+    public List<User> queryUsers(GroupRequest vo) {
+        return extUserMgr.queryUsers(vo.getGroupId());
     }
 
     public Group create(GroupRequest vo) {
@@ -47,7 +56,7 @@ public class GroupService {
     }
 
 
-    public List<Group> querys(GroupRequest vo) {
+    public List<Group> queryGroups(GroupRequest vo) {
         GroupExample example = new GroupExample();
         GroupExample.Criteria criteria = example.createCriteria();
         criteria.andStatusEqualTo(StatusEnum.NORMAL.getState());
