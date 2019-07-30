@@ -34,7 +34,7 @@ public class UserService {
         criteria.andUserNameEqualTo(username);
         criteria.andPasswordEqualTo(MD5Util.encrypt(username, password));
         List<User> users = userMapper.selectByExample(example);
-        return DataUtil.isNull(users) ? null : users.get(0);
+        return DataUtil.isNull(users) || users.isEmpty() ? null : users.get(0);
     }
 
     public User create(UserRequest vo) {
