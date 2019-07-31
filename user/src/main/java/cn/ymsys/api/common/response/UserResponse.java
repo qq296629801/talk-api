@@ -17,6 +17,7 @@ public class UserResponse extends JSONArray {
             jsonObject.put("operTime", user.getOperTime());
             jsonObject.put("money", user.getMoney());
             jsonObject.put("status", user.getStatus());
+            this.add(jsonObject);
         }
     }
 }
