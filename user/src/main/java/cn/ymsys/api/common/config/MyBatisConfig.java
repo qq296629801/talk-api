@@ -22,7 +22,7 @@ import java.util.Properties;
 
 @Configuration("coreMybatisConfig")
 @MapperScan(
-        basePackages = {"cn.ymsys.api.orm.mapper"},
+        basePackages = {"cn.ymsys.api.orm.mapper", "cn.ymsys.api.mgr"},
         sqlSessionFactoryRef = "coreSqlSessionFactory"
 )
 public class MyBatisConfig {
