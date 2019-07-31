@@ -2,6 +2,7 @@ package cn.ymsys.api.service;
 
 import cn.ymsys.api.common.enums.StatusEnum;
 import cn.ymsys.api.common.request.GroupRequest;
+import cn.ymsys.api.common.response.UserResponse;
 import cn.ymsys.api.common.websocket.util.IDUtil;
 import cn.ymsys.api.mgr.ExtUserMgr;
 import cn.ymsys.api.orm.mapper.GroupMapper;
@@ -9,7 +10,6 @@ import cn.ymsys.api.orm.mapper.GroupUserMapper;
 import cn.ymsys.api.orm.model.Group;
 import cn.ymsys.api.orm.model.GroupExample;
 import cn.ymsys.api.orm.model.GroupUser;
-import cn.ymsys.api.orm.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,8 +39,8 @@ public class GroupService {
     }
 
 
-    public List<User> queryUsers(GroupRequest vo) {
-        return extUserMgr.queryUsers(vo.getGroupId());
+    public UserResponse queryUsers(GroupRequest vo) {
+        return new UserResponse(extUserMgr.queryUsers(vo.getGroupId()));
     }
 
     public Group create(GroupRequest vo) {
