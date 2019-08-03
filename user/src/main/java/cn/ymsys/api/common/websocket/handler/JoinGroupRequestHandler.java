@@ -19,7 +19,6 @@ public class JoinGroupRequestHandler extends SimpleChannelInboundHandler<JoinGro
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, JoinGroupRequestPacket msg) throws Exception {
-
         // 获取群对应的 channelGroup ，然后将当前用户的 channel 添加进去
         String groupId = msg.getGroupId();
         ChannelGroup channelGroup = SessionUtil.getChannelGroup(groupId);

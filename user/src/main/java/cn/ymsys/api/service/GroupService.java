@@ -10,6 +10,7 @@ import cn.ymsys.api.orm.mapper.GroupUserMapper;
 import cn.ymsys.api.orm.model.Group;
 import cn.ymsys.api.orm.model.GroupExample;
 import cn.ymsys.api.orm.model.GroupUser;
+import cn.ymsys.api.orm.model.GroupUserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,13 @@ public class GroupService {
         return groupUser;
     }
 
+
+    public List<GroupUser> queryGroupsByUserId(String userId) {
+        GroupUserExample example = new GroupUserExample();
+        GroupUserExample.Criteria criteria = example.createCriteria();
+        criteria.andUserIdEqualTo(userId);
+        return groupUserMapper.selectByExample(example);
+    }
 
     public UserResponse queryUsers(GroupRequest vo) {
         return new UserResponse(extUserMgr.queryUsers(vo.getGroupId()));
