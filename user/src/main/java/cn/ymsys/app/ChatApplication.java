@@ -9,10 +9,10 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableConfigurationProperties(NettyProperties.class)
 @ComponentScan({"cn.ymsys.api.*"})
 @SpringBootApplication
-public class BlogApplication {
+public class ChatApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BlogApplication.class, args);
+        SpringApplication.run(ChatApplication.class, args);
     }
 
 }

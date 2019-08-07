@@ -227,7 +227,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>cn.ymsys.app.BlogApplication</mainClass>
+                    <mainClass>cn.ymsys.app.ChatApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
