@@ -20,8 +20,6 @@ public class GroupMessageService {
         GroupMsgExample example = new GroupMsgExample();
         GroupMsgExample.Criteria criteria = example.createCriteria();
         criteria.andGroupIdEqualTo(vo.getGroupId());
-        criteria.andSendUidEqualTo(vo.getSendUid());
-
         return groupMsgMapper.selectByExample(example);
     }
 
