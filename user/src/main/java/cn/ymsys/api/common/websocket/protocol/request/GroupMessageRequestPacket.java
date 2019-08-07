@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class GroupMessageRequestPacket extends Packet {
 
     private String toGroupId;
-
+    private int msgType;
     private String message;
 
     public GroupMessageRequestPacket(String toGroupId, String message) {

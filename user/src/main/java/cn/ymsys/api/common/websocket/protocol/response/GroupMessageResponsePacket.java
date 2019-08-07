@@ -3,7 +3,10 @@ package cn.ymsys.api.common.websocket.protocol.response;
 import cn.ymsys.api.common.websocket.protocol.Packet;
 import cn.ymsys.api.common.websocket.protocol.command.Command;
 import cn.ymsys.api.common.websocket.session.Session;
+import cn.ymsys.api.orm.model.GroupMsg;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * @author mjy
@@ -17,6 +20,8 @@ public class GroupMessageResponsePacket extends Packet {
     private Session fromUser;
 
     private String message;
+
+    private List<GroupMsg> groupMsgs;
 
 
     @Override
