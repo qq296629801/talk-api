@@ -14,18 +14,15 @@ import io.netty.channel.group.ChannelGroup;
 
 /**
  * @author mjy
- * @date 2019-04-21
  */
 @ChannelHandler.Sharable
-public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<GroupMessageRequestPacket> {
-
-    public static final GroupMessageRequestHandler INSTANCE = new GroupMessageRequestHandler();
+public class GroupMsgListRequestHandler extends SimpleChannelInboundHandler<GroupMessageRequestPacket> {
+    public static final GroupMsgListRequestHandler INSTANCE = new GroupMsgListRequestHandler();
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, GroupMessageRequestPacket msg) throws Exception {
 
         String groupId = msg.getToGroupId();
-        String message = msg.getMessage();
         Session session = SessionUtil.getSession(ctx.channel());
 
         GroupMsgRequest vo = new GroupMsgRequest();
@@ -36,13 +33,12 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
 
         // 保存聊天记录
         GroupMessageService groupMessageService = SpringContextUtil.getBean(GroupMessageService.class);
-        groupMessageService.create(vo);
 
         // 构造群聊消息的响应数据包
         GroupMessageResponsePacket groupMessageResponsePacket = new GroupMessageResponsePacket();
         groupMessageResponsePacket.setFromGroupId(groupId);
         groupMessageResponsePacket.setFromUser(session);
-        groupMessageResponsePacket.setMessage(message);
+        groupMessageResponsePacket.setGroupMessages(groupMessageService.queryGroupMsgs(vo));
 
         // 拿到群聊对应的 ChannelGroup，写到每个客户端
         ChannelGroup channelGroup = SessionUtil.getChannelGroup(groupId);

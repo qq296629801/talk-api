@@ -37,7 +37,9 @@ public class PipelineUtil {
                 // 群消息
                 GroupMessageRequestHandler.INSTANCE,
                 // 退出登录
-                LogoutRequestHandler.INSTANCE
+                LogoutRequestHandler.INSTANCE,
+                // 聊天记录
+                GroupMsgListRequestHandler.INSTANCE
         );
     }
 

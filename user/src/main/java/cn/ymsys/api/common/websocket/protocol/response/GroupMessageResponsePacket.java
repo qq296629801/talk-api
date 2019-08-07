@@ -21,8 +21,7 @@ public class GroupMessageResponsePacket extends Packet {
 
     private String message;
 
-    private List<GroupMsg> groupMsgs;
-
+    private List<GroupMsg> groupMessages;
 
     @Override
     public Byte getCommand() {
