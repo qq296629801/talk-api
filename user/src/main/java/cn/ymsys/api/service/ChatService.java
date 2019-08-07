@@ -26,6 +26,7 @@ public class ChatService {
             criteria.andUserIdEqualTo(vo.getUserId());
             criteria.andStatusEqualTo(0);
             chats = chatMapper.selectByExample(example);
+            example.setOrderByClause("last_open_time desc");
         } catch (Exception e) {
             PagerUtil.clearPage(vo);
         }
