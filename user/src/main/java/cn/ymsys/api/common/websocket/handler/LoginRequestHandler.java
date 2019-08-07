@@ -42,6 +42,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
         String password = msg.getPassword();
         UserService userService = SpringContextUtil.getBean(UserService.class);
         User user = userService.find(username, password);
+
         if (valid(user)) {
             loginResponsePacket.setSuccess(true);
             // 随机生成userId，生产环境需要注册账号并生成userId，然后存储在数据库中

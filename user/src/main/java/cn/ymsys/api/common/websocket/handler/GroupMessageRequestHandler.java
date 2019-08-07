@@ -28,6 +28,7 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         String message = msg.getMessage();
         Session session = SessionUtil.getSession(ctx.channel());
 
+        // 构造参数
         GroupMsgRequest vo = new GroupMsgRequest();
         vo.setMsgType(msg.getMsgType());
         vo.setGroupId(msg.getToGroupId());
