@@ -19,6 +19,8 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, GroupMessageRequestPacket msg) throws Exception {
+
+
         // 构造群聊消息的响应数据包
         String groupId = msg.getToGroupId();
         String message = msg.getMessage();

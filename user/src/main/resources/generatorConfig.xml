@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <properties resource="generator.properties" />
+    <properties resource="generator.properties"/>
     <context id="test" targetRuntime="MyBatis3" defaultModelType="flat">
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
@@ -34,8 +34,13 @@
         <!--<table tableName="%">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>-->
+        <table tableName="s_group_msg" domainObjectName="GroupMsg">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
         <table tableName="S_USER" domainObjectName="User">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="T_ATTEND" domainObjectName="Attend">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
