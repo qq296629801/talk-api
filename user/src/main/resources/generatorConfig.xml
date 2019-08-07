@@ -34,7 +34,7 @@
         <!--<table tableName="%">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>-->
-        <table tableName="s_group_msg" domainObjectName="GroupMsg">
+        <table tableName="t_chat" domainObjectName="Chat">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
