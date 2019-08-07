@@ -1,5 +1,6 @@
 package cn.ymsys.api.common.websocket.handler;
 
+import cn.ymsys.api.common.enums.ChatTypeEnum;
 import cn.ymsys.api.common.request.ChatRequest;
 import cn.ymsys.api.common.request.GroupMsgRequest;
 import cn.ymsys.api.common.util.SpringContextUtil;
@@ -43,7 +44,7 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         ChatRequest chatReq = new ChatRequest();
         chatReq.setUserId(userId);
         chatReq.setChatId(groupId);
-        chatReq.setChatType(msgType);
+        chatReq.setChatType(ChatTypeEnum.GROUP.getValue());
         chatReq.setDesc(message);
 
         // 保存聊天记录
