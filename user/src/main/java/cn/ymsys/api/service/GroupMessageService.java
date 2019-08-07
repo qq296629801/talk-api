@@ -36,30 +36,30 @@ public class GroupMessageService {
     }
 
     public GroupMsg create(GroupMsgRequest vo) {
-        GroupMsg gm = new GroupMsg();
-        gm.setGroupId(vo.getGroupId());
-        gm.setMsgContext(vo.getMessage());
-        gm.setMsgType(vo.getMsgType());
-        gm.setSendUid(vo.getSendUid());
-        gm.setLastOperTime(new Date());
-        gm.setOperTime(new Date());
-        groupMsgMapper.insertSelective(gm);
-        return gm;
+        GroupMsg gmsg = new GroupMsg();
+        gmsg.setGroupId(vo.getGroupId());
+        gmsg.setMsgContext(vo.getMessage());
+        gmsg.setMsgType(vo.getMsgType());
+        gmsg.setSendUid(vo.getSendUid());
+        gmsg.setLastOperTime(new Date());
+        gmsg.setOperTime(new Date());
+        groupMsgMapper.insertSelective(gmsg);
+        return gmsg;
     }
 
     public int update(GroupMsgRequest vo) {
-        GroupMsg gm = new GroupMsg();
-        gm.setId(vo.getId());
-        gm.setGroupId(vo.getGroupId());
-        gm.setMsgContext(vo.getMessage());
-        gm.setMsgType(vo.getMsgType());
-        gm.setSendUid(vo.getSendUid());
-        gm.setLastOperTime(new Date());
-        gm.setOperTime(new Date());
+        GroupMsg gmsg = new GroupMsg();
+        gmsg.setId(vo.getId());
+        gmsg.setGroupId(vo.getGroupId());
+        gmsg.setMsgContext(vo.getMessage());
+        gmsg.setMsgType(vo.getMsgType());
+        gmsg.setSendUid(vo.getSendUid());
+        gmsg.setLastOperTime(new Date());
+        gmsg.setOperTime(new Date());
 
         GroupMsgExample example = new GroupMsgExample();
         GroupMsgExample.Criteria criteria = example.createCriteria();
         criteria.andStatusEqualTo(0);
-        return groupMsgMapper.updateByExampleSelective(gm, example);
+        return groupMsgMapper.updateByExampleSelective(gmsg, example);
     }
 }
