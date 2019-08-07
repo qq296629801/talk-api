@@ -18,6 +18,7 @@ public class GroupMessageResponsePacket extends Packet {
 
     private String message;
 
+
     @Override
     public Byte getCommand() {
         return Command.GROUP_MESSAGE_RESPONSE;

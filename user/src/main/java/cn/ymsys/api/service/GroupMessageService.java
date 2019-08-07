@@ -39,6 +39,7 @@ public class GroupMessageService {
 
     public int update(GroupMsgRequest vo) {
         GroupMsg gm = new GroupMsg();
+        gm.setId(vo.getId());
         gm.setGroupId(vo.getGroupId());
         gm.setMsgContext(vo.getMessage());
         gm.setMsgType(vo.getMsgType());
