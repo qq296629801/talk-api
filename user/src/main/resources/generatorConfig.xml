@@ -38,7 +38,7 @@
             <property name="ignoreQualifiersAtRuntime" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-        <table tableName="S_USER" domainObjectName="User">
+       <!-- <table tableName="S_USER" domainObjectName="User">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
             <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
         </table>
@@ -72,6 +72,6 @@
         <table tableName="T_WORD" domainObjectName="Word">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
             <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
-        </table>
+        </table>-->
     </context>
 </generatorConfiguration>

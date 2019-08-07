@@ -8,4 +8,5 @@ public class GroupMsgRequest {
     private String sendUid;
     private Integer msgType;
     private String message;
+    private Integer gmId;
 }

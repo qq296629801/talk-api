@@ -36,4 +36,19 @@ public class GroupMessageService {
         groupMsgMapper.insertSelective(gm);
         return gm;
     }
+
+    public int update(GroupMsgRequest vo) {
+        GroupMsg gm = new GroupMsg();
+        gm.setGroupId(vo.getGroupId());
+        gm.setMsgContext(vo.getMessage());
+        gm.setMsgType(vo.getMsgType());
+        gm.setSendUid(vo.getSendUid());
+        gm.setLastOperTime(new Date());
+        gm.setOperTime(new Date());
+
+        GroupMsgExample example = new GroupMsgExample();
+        GroupMsgExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusEqualTo(0);
+        return groupMsgMapper.updateByExampleSelective(gm, example);
+    }
 }
