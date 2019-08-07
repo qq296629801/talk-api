@@ -16,8 +16,8 @@ import io.netty.channel.group.ChannelGroup;
  * @author mjy
  */
 @ChannelHandler.Sharable
-public class GroupMsgListRequestHandler extends SimpleChannelInboundHandler<GroupMessageRequestPacket> {
-    public static final GroupMsgListRequestHandler INSTANCE = new GroupMsgListRequestHandler();
+public class ListGroupMsgRequestHandler extends SimpleChannelInboundHandler<GroupMessageRequestPacket> {
+    public static final ListGroupMsgRequestHandler INSTANCE = new ListGroupMsgRequestHandler();
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, GroupMessageRequestPacket msg) throws Exception {
