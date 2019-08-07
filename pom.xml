@@ -6,7 +6,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>websocket</module>
-        <module>manage</module>
         <module>user</module>
     </modules>
     <parent>
