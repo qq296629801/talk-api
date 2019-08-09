@@ -16,7 +16,7 @@ import java.util.List;
  * @author mjy
  */
 @Service
-public class GroupMessageService {
+public class GroupMsgService {
 
     @Autowired
     private GroupMsgMapper groupMsgMapper;

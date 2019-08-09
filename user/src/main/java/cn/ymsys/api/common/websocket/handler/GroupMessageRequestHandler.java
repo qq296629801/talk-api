@@ -9,7 +9,7 @@ import cn.ymsys.api.common.websocket.protocol.response.GroupMessageResponsePacke
 import cn.ymsys.api.common.websocket.session.Session;
 import cn.ymsys.api.common.websocket.util.SessionUtil;
 import cn.ymsys.api.service.ChatService;
-import cn.ymsys.api.service.GroupMessageService;
+import cn.ymsys.api.service.GroupMsgService;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -48,7 +48,7 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         chatReq.setDesc(message);
 
         // 保存聊天记录
-        GroupMessageService groupMessageService = SpringContextUtil.getBean(GroupMessageService.class);
+        GroupMsgService groupMessageService = SpringContextUtil.getBean(GroupMsgService.class);
         ChatService chatService = SpringContextUtil.getBean(ChatService.class);
         groupMessageService.create(groupMsgReq);
         chatService.openChat(chatReq);

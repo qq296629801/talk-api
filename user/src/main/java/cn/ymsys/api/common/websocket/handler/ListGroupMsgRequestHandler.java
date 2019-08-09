@@ -6,7 +6,7 @@ import cn.ymsys.api.common.websocket.protocol.request.GroupMessageRequestPacket;
 import cn.ymsys.api.common.websocket.protocol.response.GroupMessageResponsePacket;
 import cn.ymsys.api.common.websocket.session.Session;
 import cn.ymsys.api.common.websocket.util.SessionUtil;
-import cn.ymsys.api.service.GroupMessageService;
+import cn.ymsys.api.service.GroupMsgService;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -32,7 +32,7 @@ public class ListGroupMsgRequestHandler extends SimpleChannelInboundHandler<Grou
         vo.setSendUid(session.getUserId());
 
         // 保存聊天记录
-        GroupMessageService groupMessageService = SpringContextUtil.getBean(GroupMessageService.class);
+        GroupMsgService groupMessageService = SpringContextUtil.getBean(GroupMsgService.class);
 
         // 构造群聊消息的响应数据包
         GroupMessageResponsePacket groupMessageResponsePacket = new GroupMessageResponsePacket();
