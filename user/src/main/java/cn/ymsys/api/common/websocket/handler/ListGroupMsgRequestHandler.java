@@ -28,7 +28,7 @@ public class ListGroupMsgRequestHandler extends SimpleChannelInboundHandler<Grou
         GroupMsgRequest vo = new GroupMsgRequest();
         vo.setMsgType(msg.getMsgType());
         vo.setGroupId(msg.getToGroupId());
-        vo.setMessage(msg.getMessage());
+        vo.setMessage(new String(msg.getData()));
         vo.setSendUid(session.getUserId());
 
         // 保存聊天记录

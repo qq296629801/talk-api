@@ -18,6 +18,6 @@ public class SendToGroupConsoleCommand implements ConsoleCommand {
         System.out.println("请输入消息内容:");
         String message = scanner.next();
 
-        channel.writeAndFlush(new GroupMessageRequestPacket(toGroupId, message));
+        channel.writeAndFlush(new GroupMessageRequestPacket(toGroupId, message.getBytes()));
     }
 }

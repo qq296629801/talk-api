@@ -71,17 +71,20 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         channelGroup.writeAndFlush(gmrPacket);
     }
 
+//    public static void main(String[] args) {
+//        String path = String.format("%s%s/%s.%s", Const.ROOT, "images", IdUtil.simpleUUID(), "txt");
+//        System.err.println(path);
+//    }
 
     private String messageMatch(GroupMessageRequestPacket msg) {
-        String srcPath = Const.ROOT + IdUtil.simpleUUID() + msg.getFileType();
-        String destPath = Const.ROOT + IdUtil.simpleUUID() + msg.getFileType();
-        FileUtil.writeBytes(msg.getData(), srcPath);
         switch (msg.getMsgType()) {
             case 0:
                 return new String(msg.getData());
             case 1:
-                ImgUtil.scale(FileUtil.file(destPath), FileUtil.file(destPath), 0.5f);
-                break;
+                String path = String.format("%s%s/%s.%s", Const.ROOT, "images", IdUtil.simpleUUID(), msg.getFileType());
+                FileUtil.writeBytes(msg.getData(), path);
+                ImgUtil.scale(FileUtil.file(path), FileUtil.file(path), 0.5f);
+                return path;
             default:
         }
         return null;
