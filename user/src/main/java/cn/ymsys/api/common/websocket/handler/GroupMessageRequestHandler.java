@@ -45,23 +45,23 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         chatReq.setUserId(userId);
         chatReq.setChatId(groupId);
         chatReq.setChatType(ChatTypeEnum.GROUP.getValue());
-        chatReq.setDesc(message);
+        chatReq.setContext(message);
 
         // 保存聊天记录
-        GroupMsgService groupMessageService = SpringContextUtil.getBean(GroupMsgService.class);
+        GroupMsgService groupMsgService = SpringContextUtil.getBean(GroupMsgService.class);
         ChatService chatService = SpringContextUtil.getBean(ChatService.class);
-        groupMessageService.create(groupMsgReq);
+        groupMsgService.create(groupMsgReq);
         chatService.openChat(chatReq);
 
         // 构造群聊消息的响应数据包
-        GroupMessageResponsePacket groupMessageResponsePacket = new GroupMessageResponsePacket();
-        groupMessageResponsePacket.setFromGroupId(groupId);
-        groupMessageResponsePacket.setFromUser(session);
-        groupMessageResponsePacket.setMessage(message);
-        groupMessageResponsePacket.setGroupMessages(groupMessageService.queryGroupMsgs(groupMsgReq));
+        GroupMessageResponsePacket gmrPacket = new GroupMessageResponsePacket();
+        gmrPacket.setFromGroupId(groupId);
+        gmrPacket.setFromUser(session);
+        gmrPacket.setMessage(message);
+        gmrPacket.setGroupMessages(groupMsgService.queryGroupMsgs(groupMsgReq));
 
-        // 拿到群聊对应的 ChannelGroup，写到每个客户端
+        // 拿到群聊对应的 ChannelGroup 写到每个客户端
         ChannelGroup channelGroup = SessionUtil.getChannelGroup(groupId);
-        channelGroup.writeAndFlush(groupMessageResponsePacket);
+        channelGroup.writeAndFlush(gmrPacket);
     }
 }

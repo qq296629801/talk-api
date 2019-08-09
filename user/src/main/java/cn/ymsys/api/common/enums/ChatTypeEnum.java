@@ -1,8 +1,8 @@
 package cn.ymsys.api.common.enums;
 
 public enum ChatTypeEnum {
-    GROUP(1, "群聊"),
-    FRIEND(0, "好友");
+    FRIEND(0, "好友"),
+    GROUP(1, "群聊");
     private int value;
     private String name;
 
