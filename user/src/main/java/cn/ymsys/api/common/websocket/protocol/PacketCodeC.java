@@ -45,7 +45,8 @@ public class PacketCodeC {
         packetTypeMap.put(Command.GROUP_MESSAGE_RESPONSE, GroupMessageResponsePacket.class);
         packetTypeMap.put(Command.HEART_BEAT_REQUEST, HeartBeatRequestPacket.class);
         packetTypeMap.put(Command.HEART_BEAT_RESPONSE, HeartBeatResponsePacket.class);
-
+        packetTypeMap.put(Command.CHAT_REQUEST, ChatRequestPacket.class);
+        packetTypeMap.put(Command.CHAT_RESPONSE, ChatResponsePack.class);
         serializerMap = new HashMap<>();
         Serializer serializer = new JSONSerializer();
         serializerMap.put(serializer.getSerializerAlgorithm(), serializer);
