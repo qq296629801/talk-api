@@ -32,11 +32,10 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
     protected void channelRead0(ChannelHandlerContext ctx, GroupMessageRequestPacket msg) throws Exception {
 
         String groupId = msg.getToGroupId();
-        String message = msg.getMessage();
         Session session = SessionUtil.getSession(ctx.channel());
         String userId = session.getUserId();
         Integer msgType = msg.getMsgType();
-
+        String message = messageMatch(msg);
         // 消息类型匹配
         messageMatch(msg);
 
@@ -73,17 +72,18 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
     }
 
 
-    private void messageMatch(GroupMessageRequestPacket msg) {
+    private String messageMatch(GroupMessageRequestPacket msg) {
         String srcPath = Const.ROOT + IdUtil.simpleUUID() + msg.getFileType();
         String destPath = Const.ROOT + IdUtil.simpleUUID() + msg.getFileType();
         FileUtil.writeBytes(msg.getData(), srcPath);
         switch (msg.getMsgType()) {
             case 0:
-                break;
+                return new String(msg.getData());
             case 1:
                 ImgUtil.scale(FileUtil.file(destPath), FileUtil.file(destPath), 0.5f);
                 break;
             default:
         }
+        return null;
     }
 }
