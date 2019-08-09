@@ -26,12 +26,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 
-/**
- * Redis 工具类，只封装了几个常用的 redis 命e令，
- * 可根据实际需要按类似的方式扩展即可。
- *
- * @author MrBird
- */
+
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class RedisServiceImpl implements RedisService {
@@ -40,12 +35,6 @@ public class RedisServiceImpl implements RedisService {
     @Autowired
     JedisPool jedisPool;
 
-    /**
-     * 处理 jedis请求
-     *
-     * @param j 处理逻辑，通过 lambda行为参数化
-     * @return 处理结果
-     */
     private <T> T executeByJedis(JedisExecutor<Jedis, T> j) throws RedisConnectException {
         Jedis jedis = null;
         try {
