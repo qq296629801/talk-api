@@ -1,9 +1,9 @@
 package cn.ymsys.api.service;
 
+import cn.hutool.core.util.IdUtil;
 import cn.ymsys.api.common.enums.StatusEnum;
 import cn.ymsys.api.common.request.GroupRequest;
 import cn.ymsys.api.common.response.UserResponse;
-import cn.ymsys.api.common.websocket.util.IDUtil;
 import cn.ymsys.api.mgr.ExtUserMgr;
 import cn.ymsys.api.orm.mapper.GroupMapper;
 import cn.ymsys.api.orm.mapper.GroupUserMapper;
@@ -54,8 +54,8 @@ public class GroupService {
     public Group create(GroupRequest vo) {
         Group group = new Group();
         group.setGroupName(vo.getGroupName());
-        String groupId = IDUtil.randomId();
-        group.setId(groupId);
+        String simpleUUID = IdUtil.simpleUUID();
+        group.setId(simpleUUID);
         group.setLastOperTime(new Date());
         group.setOperTime(new Date());
         group.setStatus(0);

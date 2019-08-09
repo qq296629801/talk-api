@@ -1,9 +1,9 @@
 package cn.ymsys.api.service;
 
+import cn.hutool.core.util.IdUtil;
 import cn.ymsys.api.common.request.UserRequest;
 import cn.ymsys.api.common.util.DataUtil;
 import cn.ymsys.api.common.util.MD5Util;
-import cn.ymsys.api.common.websocket.util.IDUtil;
 import cn.ymsys.api.orm.mapper.UserMapper;
 import cn.ymsys.api.orm.model.User;
 import cn.ymsys.api.orm.model.UserExample;
@@ -39,8 +39,8 @@ public class UserService {
 
     public User create(UserRequest vo) {
         User user = new User();
-        String userId = IDUtil.randomId();
-        user.setId(userId);
+        String simpleUUID = IdUtil.simpleUUID();
+        user.setId(simpleUUID);
         user.setNickName(vo.getNickName());
         user.setUserName(vo.getUsername());
         user.setPassword(MD5Util.encrypt(vo.getUsername(), vo.getPassword()));
