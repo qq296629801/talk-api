@@ -1,5 +1,6 @@
 package cn.ymsys.api.service;
 
+import cn.hutool.core.io.FileTypeUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.ymsys.api.common.enums.ExceptionEnum;
 import cn.ymsys.api.common.util.Const;
@@ -18,9 +19,9 @@ public class FileService {
             throw new OwnException(ExceptionEnum.E_MODEL_DEFAULT_ERROR, "null exception");
         }
         String fileName = file.getOriginalFilename();
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));
+        String suffixName = FileTypeUtil.getTypeByPath(fileName);
         fileName = IdUtil.simpleUUID() + suffixName;
-        File dest = new File(Const.PATH + fileName);
+        File dest = new File(Const.ROOT + fileName);
         if (!dest.getParentFile().exists()) {
             dest.getParentFile().mkdirs();
         }

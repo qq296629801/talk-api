@@ -15,6 +15,7 @@ public class GroupMessageRequestPacket extends Packet {
 
     private String toGroupId;
     private int msgType;
+    private String fileType;
     private String message;
     private byte[] data;
 

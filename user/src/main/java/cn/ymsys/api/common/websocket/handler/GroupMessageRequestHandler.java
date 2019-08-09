@@ -1,8 +1,12 @@
 package cn.ymsys.api.common.websocket.handler;
 
+import cn.hutool.core.img.ImgUtil;
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.IdUtil;
 import cn.ymsys.api.common.enums.ChatTypeEnum;
 import cn.ymsys.api.common.request.ChatRequest;
 import cn.ymsys.api.common.request.GroupMsgRequest;
+import cn.ymsys.api.common.util.Const;
 import cn.ymsys.api.common.util.SpringContextUtil;
 import cn.ymsys.api.common.websocket.protocol.request.GroupMessageRequestPacket;
 import cn.ymsys.api.common.websocket.protocol.response.GroupMessageResponsePacket;
@@ -32,6 +36,9 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         Session session = SessionUtil.getSession(ctx.channel());
         String userId = session.getUserId();
         Integer msgType = msg.getMsgType();
+
+        // 消息类型匹配
+        messageMatch(msg);
 
         // 构造聊天记录参数
         GroupMsgRequest groupMsgReq = new GroupMsgRequest();
@@ -63,5 +70,20 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         // 拿到群聊对应的 ChannelGroup 写到每个客户端
         ChannelGroup channelGroup = SessionUtil.getChannelGroup(groupId);
         channelGroup.writeAndFlush(gmrPacket);
+    }
+
+
+    private void messageMatch(GroupMessageRequestPacket msg) {
+        String srcPath = Const.ROOT + IdUtil.simpleUUID() + msg.getFileType();
+        String destPath = Const.ROOT + IdUtil.simpleUUID() + msg.getFileType();
+        FileUtil.writeBytes(msg.getData(), srcPath);
+        switch (msg.getMsgType()) {
+            case 0:
+                break;
+            case 1:
+                ImgUtil.scale(FileUtil.file(destPath), FileUtil.file(destPath), 0.5f);
+                break;
+            default:
+        }
     }
 }
