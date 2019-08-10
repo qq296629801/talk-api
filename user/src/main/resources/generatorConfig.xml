@@ -34,7 +34,7 @@
         <!--<table tableName="%">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
         </table>-->
-        <table tableName="s_user" domainObjectName="User">
+        <table tableName="t_blacklist" domainObjectName="Blacklist">
             <property name="ignoreQualifiersAtRuntime" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>

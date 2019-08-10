@@ -21,6 +21,8 @@ public class GroupMessageResponsePacket extends Packet {
 
     private String message;
 
+    private String reason;
+
     private List<GroupMsg> groupMessages;
 
     @Override

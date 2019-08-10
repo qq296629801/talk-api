@@ -9,6 +9,7 @@ import cn.ymsys.api.common.websocket.session.Session;
 import cn.ymsys.api.common.websocket.util.SessionUtil;
 import cn.ymsys.api.orm.model.GroupUser;
 import cn.ymsys.api.orm.model.User;
+import cn.ymsys.api.service.BlacklistService;
 import cn.ymsys.api.service.GroupService;
 import cn.ymsys.api.service.UserService;
 import io.netty.channel.ChannelHandler;
@@ -81,7 +82,8 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
     }
 
     private boolean valid(User user) {
-        return DataUtil.isNotNull(user);
+        BlacklistService blackService = SpringContextUtil.getBean(BlacklistService.class);
+        return DataUtil.isNotNull(user) && !blackService.checkBlacklist(user.getId());
     }
 
     @Override

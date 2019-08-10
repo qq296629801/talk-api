@@ -10,10 +10,9 @@ public class BlacklistService {
     @Autowired
     private BlacklistMapper blacklistMapper;
 
-    public boolean checkBlacklist(String groupId, String userId) {
+    public boolean checkBlacklist(String userId) {
         BlacklistExample example = new BlacklistExample();
         BlacklistExample.Criteria criteria = example.createCriteria();
-        criteria.andGroupIdEqualTo(groupId);
         criteria.andUserIdEqualTo(userId);
         criteria.andStatusEqualTo(0);
         return blacklistMapper.countByExample(example) > 0 ? true : false;
