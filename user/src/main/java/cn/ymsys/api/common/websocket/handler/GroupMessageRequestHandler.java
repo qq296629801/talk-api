@@ -1,6 +1,5 @@
 package cn.ymsys.api.common.websocket.handler;
 
-import cn.hutool.core.img.ImgUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.ymsys.api.common.enums.ChatTypeEnum;
@@ -71,22 +70,13 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         channelGroup.writeAndFlush(gmrPacket);
     }
 
-//    public static void main(String[] args) {
-//        String path = String.format("%s%s/%s.%s", Const.ROOT, "images", IdUtil.simpleUUID(), "txt");
-//        System.err.println(path);
-//    }
-
     private String messageMatch(GroupMessageRequestPacket msg) {
-        switch (msg.getMsgType()) {
-            case 0:
-                return new String(msg.getData());
-            case 1:
-                String path = String.format("%s%s/%s.%s", Const.ROOT, "images", IdUtil.simpleUUID(), msg.getFileType());
-                FileUtil.writeBytes(msg.getData(), path);
-                ImgUtil.scale(FileUtil.file(path), FileUtil.file(path), 0.5f);
-                return path;
-            default:
+        if (msg.getMsgType() == 0) {
+            return new String(msg.getData());
+        } else {
+            String path = String.format("%s%s.%s", Const.ROOT, IdUtil.simpleUUID(), msg.getFileType());
+            FileUtil.writeBytes(msg.getData(), path);
+            return path;
         }
-        return null;
     }
 }

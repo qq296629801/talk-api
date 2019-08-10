@@ -2,7 +2,6 @@ package cn.ymsys.api.common.util;
 
 public class Const {
     public final static String ROOT = "/usr/local/nginx/html/img/";
-    public final static int PAGE_SIZE = 10;
     public final static String APP_ID = "15664475";
     public final static String API_KEY = "LHeNFNm3BcGHRBfCO6V1zhsQ";
     public final static String SECRET_KEY = "FRW4ibw8L8LfrYTqVDwecRzhCyNYGEa6";
