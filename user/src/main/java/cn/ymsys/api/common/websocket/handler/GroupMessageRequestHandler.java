@@ -3,6 +3,8 @@ package cn.ymsys.api.common.websocket.handler;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.ymsys.api.common.enums.ChatTypeEnum;
+import cn.ymsys.api.common.enums.MessageTypeEnum;
+import cn.ymsys.api.common.request.AttendRequest;
 import cn.ymsys.api.common.request.ChatRequest;
 import cn.ymsys.api.common.request.GroupMsgRequest;
 import cn.ymsys.api.common.util.Const;
@@ -11,6 +13,7 @@ import cn.ymsys.api.common.websocket.protocol.request.GroupMessageRequestPacket;
 import cn.ymsys.api.common.websocket.protocol.response.GroupMessageResponsePacket;
 import cn.ymsys.api.common.websocket.session.Session;
 import cn.ymsys.api.common.websocket.util.SessionUtil;
+import cn.ymsys.api.service.AttendService;
 import cn.ymsys.api.service.ChatService;
 import cn.ymsys.api.service.GroupMsgService;
 import io.netty.channel.ChannelHandler;
@@ -34,9 +37,10 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         Session session = SessionUtil.getSession(ctx.channel());
         String userId = session.getUserId();
         Integer msgType = msg.getMsgType();
-        String message = messageMatch(msg);
+        
         // 消息类型匹配
-        messageMatch(msg);
+        String message = messageMatch(msg, userId);
+
 
         // 构造聊天记录参数
         GroupMsgRequest groupMsgReq = new GroupMsgRequest();
@@ -70,9 +74,16 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         channelGroup.writeAndFlush(gmrPacket);
     }
 
-    private String messageMatch(GroupMessageRequestPacket msg) {
-        if (msg.getMsgType() == 0) {
+    private String messageMatch(GroupMessageRequestPacket msg, String userId) {
+        if (msg.getMsgType() == MessageTypeEnum.TEXT.getValue()) {
             return new String(msg.getData());
+        } else if (msg.getMsgType() == MessageTypeEnum.ATTEND.getValue()) {
+            AttendService attendService = SpringContextUtil.getBean(AttendService.class);
+            AttendRequest attReq = new AttendRequest();
+            attReq.setGroupId(msg.getToGroupId());
+            attReq.setUserId(userId);
+            attendService.single(attReq);
+            return "签到成功";
         } else {
             String path = String.format("%s%s.%s", Const.ROOT, IdUtil.simpleUUID(), msg.getFileType());
             FileUtil.writeBytes(msg.getData(), path);

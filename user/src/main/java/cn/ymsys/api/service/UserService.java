@@ -66,6 +66,7 @@ public class UserService {
         user.setUserName(vo.getUsername());
         user.setPassword(MD5Util.encrypt(vo.getUsername(), vo.getPassword()));
         user.setMoney(vo.getMoney());
+        user.setAvatar(vo.getAvatar());
         user.setLastOperTime(new Date());
 
 

@@ -10,4 +10,5 @@ public class UserRequest extends PagerUtil {
     private String password;
     private String nickName;
     private Integer money;
+    private String avatar;
 }
