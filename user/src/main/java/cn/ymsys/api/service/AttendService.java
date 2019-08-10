@@ -25,22 +25,20 @@ public class AttendService {
 
     @Transient
     public void single(AttendRequest vo) {
-        if (!validate(vo)) {
-            Attend attend = new Attend();
-            attend.setAttendTime(sdf.format(new Date()));
-            attend.setIp("");
-            attend.setLastOperTime(new Date());
-            attend.setStatus(0);
-            attendMapper.insertSelective(attend);
-            moneyService.create(vo.getUserId(), vo.getGroupId());
-            UserRequest userReq = new UserRequest();
-            userReq.setId(vo.getUserId());
-            userReq.setMoney(10);
-            userService.update(userReq);
-        }
+        Attend attend = new Attend();
+        attend.setAttendTime(sdf.format(new Date()));
+        attend.setIp("");
+        attend.setLastOperTime(new Date());
+        attend.setStatus(0);
+        attendMapper.insertSelective(attend);
+        moneyService.create(vo.getUserId(), vo.getGroupId());
+        UserRequest userReq = new UserRequest();
+        userReq.setId(vo.getUserId());
+        userReq.setMoney(10);
+        userService.update(userReq);
     }
 
-    private boolean validate(AttendRequest vo) {
+    public boolean validate(AttendRequest vo) {
         AttendExample example = new AttendExample();
         AttendExample.Criteria criteria = example.createCriteria();
         criteria.andStatusEqualTo(StatusEnum.NORMAL.getState());

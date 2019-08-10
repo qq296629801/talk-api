@@ -37,7 +37,7 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         Session session = SessionUtil.getSession(ctx.channel());
         String userId = session.getUserId();
         Integer msgType = msg.getMsgType();
-        
+
         // 消息类型匹配
         String message = messageMatch(msg, userId);
 
@@ -82,8 +82,12 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
             AttendRequest attReq = new AttendRequest();
             attReq.setGroupId(msg.getToGroupId());
             attReq.setUserId(userId);
-            attendService.single(attReq);
-            return "签到成功";
+            if (attendService.validate(attReq)) {
+                attendService.single(attReq);
+                return "success";
+            } else {
+                return "error";
+            }
         } else {
             String path = String.format("%s%s.%s", Const.ROOT, IdUtil.simpleUUID(), msg.getFileType());
             FileUtil.writeBytes(msg.getData(), path);
