@@ -38,4 +38,6 @@ public interface Command {
     Byte CHAT_REQUEST = 19;
     Byte CHAT_RESPONSE = 20;
 
+    Byte USER_INFO_REQUEST = 21;
+    Byte USER_INFO_RESPONSE = 22;
 }
