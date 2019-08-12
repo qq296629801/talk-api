@@ -7,12 +7,20 @@ import cn.ymsys.api.orm.model.WordExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
 public class WordService {
     @Autowired
     private WordMapper wordMapper;
+
+    public static List<Word> words;
+
+    @PostConstruct
+    public void initData() {
+        words = querys(null);
+    }
 
     public Word create(WordRequest vo) {
         Word word = new Word();
