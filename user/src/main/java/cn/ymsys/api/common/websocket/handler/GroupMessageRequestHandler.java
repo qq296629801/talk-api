@@ -76,7 +76,8 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
 
     private String messageMatch(GroupMessageRequestPacket msg, String userId) {
         if (msg.getMsgType() == MessageTypeEnum.TEXT.getValue()) {
-            return new String(msg.getData());
+            String richMsg = new String(msg.getData());
+            return richMsg;
         } else if (msg.getMsgType() == MessageTypeEnum.ATTEND.getValue()) {
             AttendService attendService = SpringContextUtil.getBean(AttendService.class);
             AttendRequest attReq = new AttendRequest();
