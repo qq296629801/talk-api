@@ -69,11 +69,7 @@ public class UserService {
         user.setAvatar(vo.getAvatar());
         user.setLastOperTime(new Date());
 
-
-        UserExample example = new UserExample();
-        UserExample.Criteria criteria = example.createCriteria();
-        criteria.andStatusEqualTo(0);
-        return userMapper.updateByExampleSelective(user, example);
+        return userMapper.updateByPrimaryKey(user);
     }
 
     public int delete(UserRequest vo) {
