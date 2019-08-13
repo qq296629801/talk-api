@@ -43,7 +43,7 @@ public class PipelineUtil {
                 // 聊天列表
                 ChatRequestHandler.INSTANCE,
                 // 用户信息
-                UserRequesstHandler.INSTANCE
+                UserRequestHandler.INSTANCE
         );
     }
 
