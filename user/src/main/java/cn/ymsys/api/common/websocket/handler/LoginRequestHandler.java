@@ -54,12 +54,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
             for (GroupUser groupUser : groupService.queryGroupsByUserId(userId)) {
                 //判断群是否在
                 String groupId = groupUser.getGroupId();
-
                 ChannelGroup channelGroup = SessionUtil.getChannelGroup(groupId);
-                //构建加群响应
-                JoinGroupResponsePacket joinGroupResponsePacket = new JoinGroupResponsePacket();
-                joinGroupResponsePacket.setSuccess(true);
-                joinGroupResponsePacket.setGroupId(groupId);
                 if (channelGroup != null) {
                     //直接加入
                     channelGroup.add(ctx.channel());
@@ -70,8 +65,6 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
                     //缓存群会话
                     SessionUtil.bindChannelGroup(groupId, channelGroup);
                 }
-                //加群响应
-                ctx.channel().writeAndFlush(joinGroupResponsePacket);
             }
         } else {
             loginResponsePacket.setSuccess(false);
