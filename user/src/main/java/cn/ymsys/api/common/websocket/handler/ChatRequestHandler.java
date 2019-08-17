@@ -7,12 +7,14 @@ import cn.ymsys.api.common.websocket.protocol.response.ChatResponsePack;
 import cn.ymsys.api.common.websocket.session.Session;
 import cn.ymsys.api.common.websocket.util.SessionUtil;
 import cn.ymsys.api.service.ChatService;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 /**
  * @author mjy
  */
+@ChannelHandler.Sharable
 public class ChatRequestHandler extends SimpleChannelInboundHandler<ChatRequestPacket> {
     public static final ChatRequestHandler INSTANCE = new ChatRequestHandler();
 
