@@ -8,4 +8,5 @@ public class GroupRequest extends PagerUtil {
     private String groupName;
     private String groupId;
     private String userId;
+    private String avator;
 }

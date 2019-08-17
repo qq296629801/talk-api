@@ -71,7 +71,9 @@ public class ChatService {
             chat = new Chat();
             chat.setChatId(vo.getChatId());
             chat.setChatType(vo.getChatType());
-            chat.setContext(vo.getContext());
+            chat.setContent(vo.getContent());
+            chat.setChatName(vo.getChatName());
+            chat.setImgUrl(vo.getImgUrl());
             chat.setUserId(vo.getUserId());
             chat.setLastOpenTime(new Date());
             chat.setOpenTime(new Date());
@@ -79,7 +81,9 @@ public class ChatService {
             chat.setUnreadNumber(1);
             chatMapper.insertSelective(chat);
         } else {
-            chat.setContext(vo.getContext());
+            chat.setContent(vo.getContent());
+            chat.setChatName(vo.getChatName());
+            chat.setImgUrl(vo.getImgUrl());
             chat.setLastOpenTime(new Date());
             chat.setUnreadNumber(0);
             chat.setUnreadStatus(false);

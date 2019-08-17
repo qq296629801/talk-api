@@ -3,7 +3,6 @@ package cn.ymsys.api.common.websocket.handler;
 import cn.ymsys.api.common.util.DataUtil;
 import cn.ymsys.api.common.util.SpringContextUtil;
 import cn.ymsys.api.common.websocket.protocol.request.LoginRequestPacket;
-import cn.ymsys.api.common.websocket.protocol.response.JoinGroupResponsePacket;
 import cn.ymsys.api.common.websocket.protocol.response.LoginResponsePacket;
 import cn.ymsys.api.common.websocket.session.Session;
 import cn.ymsys.api.common.websocket.util.SessionUtil;
@@ -50,7 +49,12 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
             String userId = user.getId();
             loginResponsePacket.setUserId(userId);
             // 缓存用户会话信息和连接的映射关系
-            SessionUtil.bindSession(new Session(userId, username), ctx.channel());
+            Session session = new Session();
+            session.setUserId(userId);
+            session.setNickName(user.getNickName());
+            session.setUserName(username);
+            session.setImgUrl(user.getAvatar());
+            SessionUtil.bindSession(session, ctx.channel());
             for (GroupUser groupUser : groupService.queryGroupsByUserId(userId)) {
                 //判断群是否在
                 String groupId = groupUser.getGroupId();

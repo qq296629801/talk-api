@@ -8,6 +8,8 @@ public class ChatRequest extends PagerUtil {
     private String userId;
     private Integer chatType;
     private String chatId;
-    private String context;
+    private String content;
+    private String imgUrl;
+    private String chatName;
     private Integer id;
 }

@@ -40,4 +40,7 @@ public interface Command {
 
     Byte USER_INFO_REQUEST = 21;
     Byte USER_INFO_RESPONSE = 22;
+
+    Byte GROUP_MESSAGE_LIST_REQUEST = 23;
+    Byte GROUP_MESSAGE_LIST_RESPONSE = 24;
 }

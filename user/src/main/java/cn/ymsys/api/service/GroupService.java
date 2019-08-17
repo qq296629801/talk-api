@@ -29,6 +29,11 @@ public class GroupService {
     @Autowired
     private ExtUserMgr extUserMgr;
 
+
+    public Group queryByKey(String id) {
+        return groupMapper.selectByPrimaryKey(id);
+    }
+
     public GroupUser addGroupUsers(GroupRequest vo) {
         GroupUser groupUser = new GroupUser();
         groupUser.setGroupId(vo.getGroupId());
@@ -56,6 +61,7 @@ public class GroupService {
         group.setGroupName(vo.getGroupName());
         String simpleUUID = IdUtil.simpleUUID();
         group.setId(simpleUUID);
+        group.setAvator(vo.getAvator());
         group.setLastOperTime(new Date());
         group.setOperTime(new Date());
         group.setStatus(0);

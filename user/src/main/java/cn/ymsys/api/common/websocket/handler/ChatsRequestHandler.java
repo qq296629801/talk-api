@@ -15,8 +15,8 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * @author mjy
  */
 @ChannelHandler.Sharable
-public class ChatRequestHandler extends SimpleChannelInboundHandler<ChatRequestPacket> {
-    public static final ChatRequestHandler INSTANCE = new ChatRequestHandler();
+public class ChatsRequestHandler extends SimpleChannelInboundHandler<ChatRequestPacket> {
+    public static final ChatsRequestHandler INSTANCE = new ChatsRequestHandler();
 
 
     @Override

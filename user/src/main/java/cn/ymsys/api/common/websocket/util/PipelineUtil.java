@@ -39,9 +39,9 @@ public class PipelineUtil {
                 // 退出登录
                 LogoutRequestHandler.INSTANCE,
                 // 聊天记录
-                ListGroupMsgRequestHandler.INSTANCE,
+                GroupMsgListRequestHandler.INSTANCE,
                 // 聊天列表
-                ChatRequestHandler.INSTANCE,
+                ChatsRequestHandler.INSTANCE,
                 // 用户信息
                 UserRequestHandler.INSTANCE
         );

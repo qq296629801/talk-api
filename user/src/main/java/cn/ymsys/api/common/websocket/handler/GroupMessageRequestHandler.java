@@ -13,9 +13,11 @@ import cn.ymsys.api.common.websocket.protocol.request.GroupMessageRequestPacket;
 import cn.ymsys.api.common.websocket.protocol.response.GroupMessageResponsePacket;
 import cn.ymsys.api.common.websocket.session.Session;
 import cn.ymsys.api.common.websocket.util.SessionUtil;
+import cn.ymsys.api.orm.model.Group;
 import cn.ymsys.api.service.AttendService;
 import cn.ymsys.api.service.ChatService;
 import cn.ymsys.api.service.GroupMsgService;
+import cn.ymsys.api.service.GroupService;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -49,17 +51,25 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         groupMsgReq.setMessage(message);
         groupMsgReq.setSendUid(userId);
 
+
+        GroupService groupService = SpringContextUtil.getBean(GroupService.class);
+        Group group = groupService.queryByKey(groupId);
+
         // 构造聊天列表参数
         ChatRequest chatReq = new ChatRequest();
         chatReq.setUserId(userId);
         chatReq.setChatId(groupId);
         chatReq.setChatType(ChatTypeEnum.GROUP.getValue());
-        chatReq.setContext(message);
+        chatReq.setContent(String.format("%s:%s", session.getUserName(), message));
+        chatReq.setChatName(group.getGroupName());
+        chatReq.setImgUrl(group.getAvator());
 
         // 保存聊天记录
         GroupMsgService groupMsgService = SpringContextUtil.getBean(GroupMsgService.class);
         ChatService chatService = SpringContextUtil.getBean(ChatService.class);
         groupMsgService.create(groupMsgReq);
+
+        // 聊天列表更新
         chatService.openChat(chatReq);
 
         // 构造群聊消息的响应数据包
@@ -67,7 +77,6 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         gmrPacket.setFromGroupId(groupId);
         gmrPacket.setFromUser(session);
         gmrPacket.setMessage(message);
-        gmrPacket.setGroupMessages(groupMsgService.queryGroupMsgs(groupMsgReq));
 
         // 拿到群聊对应的 ChannelGroup 写到每个客户端
         ChannelGroup channelGroup = SessionUtil.getChannelGroup(groupId);

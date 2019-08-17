@@ -19,6 +19,8 @@ public class Session {
      */
     private String userId;
     private String userName;
+    private String nickName;
+    private String imgUrl;
 
     public Session(String userId, String userName) {
         this.userId = userId;

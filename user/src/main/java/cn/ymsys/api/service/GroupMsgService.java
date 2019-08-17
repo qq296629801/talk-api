@@ -28,6 +28,7 @@ public class GroupMsgService {
             GroupMsgExample example = new GroupMsgExample();
             GroupMsgExample.Criteria criteria = example.createCriteria();
             criteria.andGroupIdEqualTo(vo.getGroupId());
+            criteria.andStatusEqualTo(0);
             groupMsgs = groupMsgMapper.selectByExample(example);
         } catch (Exception e) {
             PagerUtil.clearPage(vo);
