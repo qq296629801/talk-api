@@ -46,6 +46,7 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
 
         // 构造聊天记录参数
         GroupMsgRequest groupMsgReq = new GroupMsgRequest();
+        groupMsgReq.setPageSize(5);
         groupMsgReq.setMsgType(msgType);
         groupMsgReq.setGroupId(groupId);
         groupMsgReq.setMessage(message);
@@ -78,6 +79,7 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         gmrPacket.setFromGroupId(groupId);
         gmrPacket.setFromUser(session);
         gmrPacket.setMessage(message);
+        gmrPacket.setMessageList(groupMsgService.queryMessageList(groupMsgReq));
 
         // 拿到群聊对应的 ChannelGroup 写到每个客户端
         ChannelGroup channelGroup = SessionUtil.getChannelGroup(groupId);

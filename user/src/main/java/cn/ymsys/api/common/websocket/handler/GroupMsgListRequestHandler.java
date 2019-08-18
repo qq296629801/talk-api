@@ -25,6 +25,7 @@ public class GroupMsgListRequestHandler extends SimpleChannelInboundHandler<Grou
         String groupId = msg.getToGroupId();
         Session session = SessionUtil.getSession(ctx.channel());
         GroupMsgRequest vo = new GroupMsgRequest();
+        vo.setPageSize(5);
         vo.setGroupId(groupId);
         GroupMsgService groupMessageService = SpringContextUtil.getBean(GroupMsgService.class);
 

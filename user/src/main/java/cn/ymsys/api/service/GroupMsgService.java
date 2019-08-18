@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class GroupMsgService {
         } catch (Exception e) {
             PagerUtil.clearPage(vo);
         }
+        Collections.sort(msgs);
         return msgs;
     }
 
