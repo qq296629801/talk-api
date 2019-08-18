@@ -9,4 +9,5 @@ public class GroupRequest extends PagerUtil {
     private String groupId;
     private String userId;
     private String avator;
+    private String condition;
 }

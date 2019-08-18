@@ -43,7 +43,9 @@ public class PipelineUtil {
                 // 聊天列表
                 ChatsRequestHandler.INSTANCE,
                 // 用户信息
-                UserRequestHandler.INSTANCE
+                UserRequestHandler.INSTANCE,
+                // 群列表
+                GroupListRequestHandler.INSTANCE
         );
     }
 

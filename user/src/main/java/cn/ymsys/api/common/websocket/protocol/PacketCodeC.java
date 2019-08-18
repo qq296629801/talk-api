@@ -51,6 +51,8 @@ public class PacketCodeC {
         packetTypeMap.put(Command.USER_INFO_RESPONSE, UserResponsePacket.class);
         packetTypeMap.put(Command.GROUP_MESSAGE_LIST_REQUEST, GroupMessageListRequestPacket.class);
         packetTypeMap.put(Command.GROUP_MESSAGE_LIST_RESPONSE, GroupMessageListResponsePacket.class);
+        packetTypeMap.put(Command.GROUP_LIST_REQUEST, GroupListRequestPacket.class);
+        packetTypeMap.put(Command.GROUP_LIST_RESPONSE, GroupListResponsePacket.class);
         serializerMap = new HashMap<>();
         Serializer serializer = new JSONSerializer();
         serializerMap.put(serializer.getSerializerAlgorithm(), serializer);

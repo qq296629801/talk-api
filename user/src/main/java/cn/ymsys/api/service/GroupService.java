@@ -4,6 +4,10 @@ import cn.hutool.core.util.IdUtil;
 import cn.ymsys.api.common.enums.StatusEnum;
 import cn.ymsys.api.common.request.GroupRequest;
 import cn.ymsys.api.common.response.UserResponse;
+import cn.ymsys.api.common.util.DataUtil;
+import cn.ymsys.api.common.util.PagerUtil;
+import cn.ymsys.api.orm.extend.ExtGroup;
+import cn.ymsys.api.orm.extend.ExtGroupMapper;
 import cn.ymsys.api.orm.extend.ExtUserMapper;
 import cn.ymsys.api.orm.mapper.GroupMapper;
 import cn.ymsys.api.orm.mapper.GroupUserMapper;
@@ -14,6 +18,7 @@ import cn.ymsys.api.orm.model.GroupUserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +34,20 @@ public class GroupService {
     @Autowired
     private ExtUserMapper extUserMgr;
 
+    @Autowired
+    private ExtGroupMapper extGroupMapper;
+
+    public List<ExtGroup> getGroupList(GroupRequest vo) {
+        String condition = DataUtil.isEmpty(vo.getCondition()) ? "" : vo.getCondition();
+        List<ExtGroup> extGroups = new ArrayList<>();
+        try {
+            PagerUtil.startPage(vo);
+            extGroups = extGroupMapper.getGroupList(vo.getUserId(), "%" + condition + "%");
+        } catch (Exception e) {
+            PagerUtil.clearPage(vo);
+        }
+        return extGroups;
+    }
 
     public Group queryByKey(String id) {
         return groupMapper.selectByPrimaryKey(id);
