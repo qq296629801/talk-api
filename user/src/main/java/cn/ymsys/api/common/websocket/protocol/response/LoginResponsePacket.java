@@ -2,6 +2,7 @@ package cn.ymsys.api.common.websocket.protocol.response;
 
 import cn.ymsys.api.common.websocket.protocol.Packet;
 import cn.ymsys.api.common.websocket.protocol.command.Command;
+import cn.ymsys.api.common.websocket.session.Session;
 import lombok.Data;
 
 /**
@@ -13,9 +14,7 @@ import lombok.Data;
 @Data
 public class LoginResponsePacket extends Packet {
 
-    private String userId;
-
-    private String username;
+    private Session currentUser;
 
     private boolean success;
 

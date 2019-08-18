@@ -35,7 +35,6 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
         // 处理登录请求数据包
         LoginResponsePacket loginResponsePacket = new LoginResponsePacket();
         loginResponsePacket.setVersion(msg.getVersion());
-        loginResponsePacket.setUsername(msg.getUsername());
 
         // 登录校验
         String username = msg.getUsername();
@@ -47,13 +46,13 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
             loginResponsePacket.setSuccess(true);
             // 随机生成userId，生产环境需要注册账号并生成userId，然后存储在数据库中
             String userId = user.getId();
-            loginResponsePacket.setUserId(userId);
             // 缓存用户会话信息和连接的映射关系
             Session session = new Session();
             session.setUserId(userId);
             session.setNickName(user.getNickName());
             session.setUserName(username);
             session.setImgUrl(user.getAvatar());
+            loginResponsePacket.setCurrentUser(session);
             SessionUtil.bindSession(session, ctx.channel());
             for (GroupUser groupUser : groupService.queryGroupsByUserId(userId)) {
                 //判断群是否在
@@ -72,7 +71,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
             }
         } else {
             loginResponsePacket.setSuccess(false);
-            loginResponsePacket.setReason("账号密码校验失败");
+            loginResponsePacket.setReason("账号密码错误");
         }
         // 登录响应
         ctx.channel().writeAndFlush(loginResponsePacket);
