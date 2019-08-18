@@ -88,8 +88,7 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
 
     private String messageMatch(GroupMessageRequestPacket msg, String userId) {
         if (msg.getMsgType() == MessageTypeEnum.TEXT.getValue()) {
-            String richMsg = new String(msg.getData());
-            return richMsg;
+            return msg.getMessage();
         } else if (msg.getMsgType() == MessageTypeEnum.ATTEND.getValue()) {
             AttendService attendService = SpringContextUtil.getBean(AttendService.class);
             AttendRequest attReq = new AttendRequest();
@@ -103,7 +102,7 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
             }
         } else {
             String path = String.format("%s%s.%s", Const.ROOT, IdUtil.simpleUUID(), msg.getFileType());
-            FileUtil.writeBytes(msg.getData(), path);
+            FileUtil.writeBytes(msg.getMessage().getBytes(), path);
             return path;
         }
     }

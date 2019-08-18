@@ -16,11 +16,11 @@ public class GroupMessageRequestPacket extends Packet {
     private String toGroupId;
     private int msgType;
     private String fileType;
-    private byte[] data;
+    private String message;
 
-    public GroupMessageRequestPacket(String toGroupId, byte[] data) {
+    public GroupMessageRequestPacket(String toGroupId, String message) {
         this.toGroupId = toGroupId;
-        this.data = data;
+        this.message = message;
     }
 
     @Override
