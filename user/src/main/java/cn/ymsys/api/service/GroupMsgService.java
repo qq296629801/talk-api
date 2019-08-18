@@ -2,6 +2,8 @@ package cn.ymsys.api.service;
 
 import cn.ymsys.api.common.request.GroupMsgRequest;
 import cn.ymsys.api.common.util.PagerUtil;
+import cn.ymsys.api.orm.extend.ExtMsg;
+import cn.ymsys.api.orm.extend.ExtMsgMapper;
 import cn.ymsys.api.orm.mapper.GroupMsgMapper;
 import cn.ymsys.api.orm.model.GroupMsg;
 import cn.ymsys.api.orm.model.GroupMsgExample;
@@ -20,6 +22,19 @@ public class GroupMsgService {
 
     @Autowired
     private GroupMsgMapper groupMsgMapper;
+    @Autowired
+    private ExtMsgMapper extMsgMapper;
+
+    public List<ExtMsg> queryMessageList(GroupMsgRequest vo) {
+        List<ExtMsg> msgs = new ArrayList<>();
+        try {
+            PagerUtil.startPage(vo);
+            msgs = extMsgMapper.queryMessageList(vo.getGroupId());
+        } catch (Exception e) {
+            PagerUtil.clearPage(vo);
+        }
+        return msgs;
+    }
 
     public List<GroupMsg> queryGroupMsgs(GroupMsgRequest vo) {
         List<GroupMsg> groupMsgs = new ArrayList<>();

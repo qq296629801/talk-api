@@ -10,6 +10,7 @@ public class ChatRequest extends PagerUtil {
     private String chatId;
     private String content;
     private String imgUrl;
+    private boolean unreadStatus;
     private String chatName;
     private Integer id;
 }

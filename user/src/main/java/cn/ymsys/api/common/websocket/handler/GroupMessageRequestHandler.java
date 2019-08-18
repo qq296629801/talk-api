@@ -59,6 +59,7 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         ChatRequest chatReq = new ChatRequest();
         chatReq.setUserId(userId);
         chatReq.setChatId(groupId);
+        chatReq.setUnreadStatus(true);
         chatReq.setChatType(ChatTypeEnum.GROUP.getValue());
         chatReq.setContent(String.format("%s:%s", session.getUserName(), message));
         chatReq.setChatName(group.getGroupName());

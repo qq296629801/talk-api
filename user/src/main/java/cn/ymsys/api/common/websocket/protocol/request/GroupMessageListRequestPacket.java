@@ -14,14 +14,7 @@ import lombok.NoArgsConstructor;
 public class GroupMessageListRequestPacket extends Packet {
 
     private String toGroupId;
-    private int msgType;
-    private String fileType;
-    private byte[] data;
 
-    public GroupMessageListRequestPacket(String toGroupId, byte[] data) {
-        this.toGroupId = toGroupId;
-        this.data = data;
-    }
 
     @Override
     public Byte getCommand() {

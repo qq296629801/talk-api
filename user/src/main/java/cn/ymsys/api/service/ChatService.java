@@ -77,13 +77,14 @@ public class ChatService {
             chat.setUserId(vo.getUserId());
             chat.setLastOpenTime(new Date());
             chat.setOpenTime(new Date());
-            chat.setUnreadStatus(true);
-            chat.setUnreadNumber(1);
+            chat.setUnreadStatus(vo.isUnreadStatus());
+            chat.setUnreadNumber(0);
             chatMapper.insertSelective(chat);
         } else {
             chat.setContent(vo.getContent());
             chat.setChatName(vo.getChatName());
             chat.setImgUrl(vo.getImgUrl());
+            chat.setUnreadStatus(vo.isUnreadStatus());
             chat.setLastOpenTime(new Date());
             chat.setUnreadNumber(0);
             chat.setUnreadStatus(false);

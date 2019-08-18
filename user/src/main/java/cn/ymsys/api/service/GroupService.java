@@ -4,7 +4,7 @@ import cn.hutool.core.util.IdUtil;
 import cn.ymsys.api.common.enums.StatusEnum;
 import cn.ymsys.api.common.request.GroupRequest;
 import cn.ymsys.api.common.response.UserResponse;
-import cn.ymsys.api.mgr.ExtUserMgr;
+import cn.ymsys.api.orm.extend.ExtUserMapper;
 import cn.ymsys.api.orm.mapper.GroupMapper;
 import cn.ymsys.api.orm.mapper.GroupUserMapper;
 import cn.ymsys.api.orm.model.Group;
@@ -27,7 +27,7 @@ public class GroupService {
     private GroupUserMapper groupUserMapper;
 
     @Autowired
-    private ExtUserMgr extUserMgr;
+    private ExtUserMapper extUserMgr;
 
 
     public Group queryByKey(String id) {
