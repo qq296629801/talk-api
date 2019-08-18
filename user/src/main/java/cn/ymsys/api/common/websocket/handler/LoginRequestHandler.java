@@ -52,8 +52,11 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
             session.setNickName(user.getNickName());
             session.setUserName(username);
             session.setImgUrl(user.getAvatar());
-            loginResponsePacket.setCurrentUser(session);
             SessionUtil.bindSession(session, ctx.channel());
+
+            loginResponsePacket.setUserId(userId);
+            loginResponsePacket.setUserName(username);
+
             for (GroupUser groupUser : groupService.queryGroupsByUserId(userId)) {
                 //判断群是否在
                 String groupId = groupUser.getGroupId();
