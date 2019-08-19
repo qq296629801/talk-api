@@ -48,7 +48,6 @@ public class ChatMgr {
         Chat chat = new Chat();
         chat.setChatId(vo.getChatId());
         chat.setChatType(vo.getChatType());
-        chat.setContent(vo.getContent());
         chat.setUserId(vo.getUserId());
         chat.setLastOpenTime(new Date());
         chat.setOpenTime(new Date());
@@ -64,7 +63,6 @@ public class ChatMgr {
         criteria.andChatTypeEqualTo(vo.getChatType());
 
         Chat chat = new Chat();
-        chat.setContent(vo.getContent());
         chat.setLastOpenTime(new Date());
         chat.setUnreadNumber(vo.getUnreadNumber());
         chat.setUnreadStatus(vo.isUnreadStatus());
