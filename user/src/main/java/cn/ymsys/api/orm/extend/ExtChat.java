@@ -7,4 +7,5 @@ import lombok.Data;
 public class ExtChat extends Chat {
     private String chatName;
     private String imgUrl;
+    private String content;
 }
