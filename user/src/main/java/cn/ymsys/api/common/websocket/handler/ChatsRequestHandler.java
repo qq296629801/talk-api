@@ -25,11 +25,11 @@ public class ChatsRequestHandler extends SimpleChannelInboundHandler<ChatRequest
 
         ChatService chatService = SpringContextUtil.getBean(ChatService.class);
 
-        ChatRequest chatRequest = new ChatRequest();
-        chatRequest.setUserId(session.getUserId());
+        ChatRequest vo = new ChatRequest();
+        vo.setUserId(session.getUserId());
 
         ChatResponsePack chatResponsePack = new ChatResponsePack();
-        chatResponsePack.setChats(chatService.queryChats(chatRequest));
+        chatResponsePack.setChats(chatService.queryChats(vo));
 
         ctx.channel().writeAndFlush(chatResponsePack);
 

@@ -11,6 +11,6 @@ public class ChatRequest extends PagerUtil {
     private String content;
     private String imgUrl;
     private boolean unreadStatus;
+    private Integer unreadNumber;
     private String chatName;
-    private Integer id;
 }

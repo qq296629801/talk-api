@@ -62,7 +62,7 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         chatReq.setChatId(groupId);
         chatReq.setUnreadStatus(true);
         chatReq.setChatType(ChatTypeEnum.GROUP.getValue());
-        chatReq.setContent(String.format("%s:%s", session.getUserName(), message));
+        chatReq.setContent(String.format("%s:%s", session.getNickName(), message));
         chatReq.setChatName(group.getGroupName());
         chatReq.setImgUrl(group.getAvator());
 
@@ -70,8 +70,6 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         GroupMsgService groupMsgService = SpringContextUtil.getBean(GroupMsgService.class);
         ChatService chatService = SpringContextUtil.getBean(ChatService.class);
         groupMsgService.create(groupMsgReq);
-
-        // 聊天列表更新
         chatService.openChat(chatReq);
 
         // 构造群聊消息的响应数据包
