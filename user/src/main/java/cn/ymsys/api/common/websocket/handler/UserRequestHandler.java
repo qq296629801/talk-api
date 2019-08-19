@@ -30,7 +30,7 @@ public class UserRequestHandler extends SimpleChannelInboundHandler<UserRequestP
         UserResponsePacket userResPacket = new UserResponsePacket();
 
         try {
-            FileUtil.writeBytes(msg.getAvatar(), path);
+            FileUtil.writeBytes(msg.getAvatar().getBytes(), path);
             UserRequest vo = new UserRequest();
             vo.setId(session.getUserId());
             vo.setAvatar(path);

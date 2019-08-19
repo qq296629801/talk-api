@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class UserRequestPacket extends Packet {
-    private byte[] avatar;
+    private String avatar;
     private String fileType;
     private String nickName;
 

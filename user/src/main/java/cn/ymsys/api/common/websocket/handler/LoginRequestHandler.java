@@ -52,9 +52,13 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
             session.setNickName(user.getNickName());
             session.setUserName(username);
             session.setImgUrl(user.getAvatar());
+            session.setMoney(user.getMoney());
             SessionUtil.bindSession(session, ctx.channel());
 
+            loginResponsePacket.setAvatar(user.getAvatar());
             loginResponsePacket.setUserId(userId);
+            loginResponsePacket.setMoney(user.getMoney());
+            loginResponsePacket.setNickName(user.getNickName());
             loginResponsePacket.setUserName(username);
 
             for (GroupUser groupUser : groupService.queryGroupsByUserId(userId)) {

@@ -20,6 +20,7 @@ public class Session {
     private String userId;
     private String userName;
     private String nickName;
+    private Integer money;
     private String imgUrl;
 
     public Session(String userId, String userName) {

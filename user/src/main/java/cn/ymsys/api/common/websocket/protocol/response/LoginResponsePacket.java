@@ -15,6 +15,9 @@ public class LoginResponsePacket extends Packet {
 
     private String userName;
     private String userId;
+    private Integer money;
+    private String nickName;
+    private String avatar;
     private boolean success;
     private String reason;
 
