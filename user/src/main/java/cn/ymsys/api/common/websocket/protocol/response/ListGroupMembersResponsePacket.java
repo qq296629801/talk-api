@@ -3,6 +3,7 @@ package cn.ymsys.api.common.websocket.protocol.response;
 import cn.ymsys.api.common.websocket.protocol.Packet;
 import cn.ymsys.api.common.websocket.protocol.command.Command;
 import cn.ymsys.api.common.websocket.session.Session;
+import cn.ymsys.api.orm.extend.ExtUser;
 import lombok.Data;
 
 import java.util.List;
@@ -16,10 +17,9 @@ public class ListGroupMembersResponsePacket extends Packet {
 
     private String groupId;
 
-    /**
-     * 生产环境中，这里可能会构造另外一个对象来装载用户信息而非 Session
-     */
-    private List<Session> sessionList;
+    private List<Session> onlineUsers;
+
+    private List<ExtUser> members;
 
     @Override
     public Byte getCommand() {

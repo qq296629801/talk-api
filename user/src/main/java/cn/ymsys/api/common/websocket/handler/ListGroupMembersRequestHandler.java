@@ -1,9 +1,11 @@
 package cn.ymsys.api.common.websocket.handler;
 
+import cn.ymsys.api.common.util.SpringContextUtil;
 import cn.ymsys.api.common.websocket.protocol.request.ListGroupMembersRequestPacket;
 import cn.ymsys.api.common.websocket.protocol.response.ListGroupMembersResponsePacket;
 import cn.ymsys.api.common.websocket.session.Session;
 import cn.ymsys.api.common.websocket.util.SessionUtil;
+import cn.ymsys.api.service.GroupService;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -36,9 +38,11 @@ public class ListGroupMembersRequestHandler extends SimpleChannelInboundHandler<
         }
 
         // 构造获取群成员列表响应客户端
+        GroupService groupService = SpringContextUtil.getBean(GroupService.class);
         ListGroupMembersResponsePacket listGroupMembersResponsePacket = new ListGroupMembersResponsePacket();
         listGroupMembersResponsePacket.setGroupId(groupId);
-        listGroupMembersResponsePacket.setSessionList(sessionList);
+        listGroupMembersResponsePacket.setOnlineUsers(sessionList);
+        listGroupMembersResponsePacket.setMembers(groupService.queryUsersByGroupId(groupId));
         ctx.channel().writeAndFlush(listGroupMembersResponsePacket);
     }
 }

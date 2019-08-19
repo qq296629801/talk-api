@@ -8,6 +8,7 @@ import cn.ymsys.api.common.util.DataUtil;
 import cn.ymsys.api.common.util.PagerUtil;
 import cn.ymsys.api.orm.extend.ExtGroup;
 import cn.ymsys.api.orm.extend.ExtGroupMapper;
+import cn.ymsys.api.orm.extend.ExtUser;
 import cn.ymsys.api.orm.extend.ExtUserMapper;
 import cn.ymsys.api.orm.mapper.GroupMapper;
 import cn.ymsys.api.orm.mapper.GroupUserMapper;
@@ -71,8 +72,13 @@ public class GroupService {
         return groupUserMapper.selectByExample(example);
     }
 
+
+    public List<ExtUser> queryUsersByGroupId(String GroupId) {
+        return extUserMgr.queryUsers(GroupId);
+    }
+
     public UserResponse queryUsers(GroupRequest vo) {
-        return new UserResponse(extUserMgr.queryUsers(vo.getGroupId()));
+        return new UserResponse(null);
     }
 
     public Group create(GroupRequest vo) {

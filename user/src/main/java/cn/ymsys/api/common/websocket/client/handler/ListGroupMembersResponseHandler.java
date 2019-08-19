@@ -12,6 +12,6 @@ public class ListGroupMembersResponseHandler extends SimpleChannelInboundHandler
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ListGroupMembersResponsePacket msg) throws Exception {
-        System.out.println("群[" + msg.getGroupId() + "]内成员列表:" + msg.getSessionList());
+        System.out.println("群[" + msg.getGroupId() + "]内成员列表:" + msg.getOnlineUsers());
     }
 }
